@@ -1,0 +1,573 @@
+<!doctype html>
+<html>
+<meta charset="UTF-8">
+<head>
+<meta name="description" content="Guru Network's Multi-Chain Treasury">
+<meta name="keywords" content="Multi-Chain, Treasury, Granary, Finance, Compound, Vault, Interest, Decentralized Finance, defi, yield farming, Guru Network, Fantom Opera, FTM">
+<title>Guru Network's Treasury - FTM.guru</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://ftm.guru/img/64.png"/>
+<style>
+*{
+scroll-behavior: smooth !important;
+}
+body {
+  background:#17082f;
+  color: white;
+  margin:auto;
+  font-family:helvetica nueve, helvetica, robotica, ubuntu, roboto, sans-serif;
+}
+.body{
+  margin: 8%
+}
+.topbar {
+  background: #6f42c1;
+  width: calc(100%-10px);
+  display:flex;
+  flex-wrap: wrap;
+  position:sticky;
+  top:0;
+  z-index: 1;
+  border-bottom: 8px ridge #17082f
+}
+.topbar a, details a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  font-weight: bolder;
+  margin: auto
+}
+.topbar a:first-child{font-size: 2em}
+h1{font-size: 3em}
+h2{}
+h1,h2,h3{color:#32fbe2;}
+
+.lowerbar{
+  font-size: 1.25em;
+  font-weight: bolder;
+}
+.lowerbar a{
+  font-size: 0.75em;
+  font-weight: lighter;
+  padding: 10px 10px 10px 0px;
+  color:#32fbe2;
+  text-decoration: none
+}
+.lowerbar img{width:24px}
+.lowerbar .subimg{width:16px;height:16px;position: relative;right:9px;top:4px;margin-right:-11px}
+.hr1{
+  color: transparent;
+  border-top: 16px dotted #ea39b8;
+  max-width: 50%
+}
+.fore{color: gold !important;font-weight:400;font-size:1.337em}
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+}
+.card{
+  margin:10px 20px 10px 0px;
+  width: 190px;
+  padding: 20px;
+  border: 2px solid #1ea;
+  border-radius: 5px;
+  background:rgba(16,240,80,0.15);
+}
+.card hr{color: #1ea;border:solid 2px}
+.card sub{font-size: 1em}
+.card sup{font-size: 1.5em}
+.card:hover{
+  transform: translate(5px,-5px);
+  box-shadow: -5px 5px 5px rgba(16,240,80,0.75);
+  transition: 0.25s;
+  background: rgba(16,140,180,0.25);
+  cursor:zoom-in;
+}
+.ki img {
+  position: relative;
+  right:0;
+  left: 8px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 0 2px 2px rgba(16,240,80,1);
+}
+.cardapr span:first-child{font-size: 1em}
+.ki img:first-child{left: 16px}
+.ki{text-align: right}
+.fn{
+  max-height: 28px;
+  position: relative;
+  top: -5px;
+  font-size:1em;
+}
+.fn img {
+  position: relative;
+  top:10px;
+  margin-right: 8px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  box-shadow: 0 0 2px 2px rgba(16,180,240,0.5);
+}
+.fn img:nth-child(2) {margin: 0 -10px}
+.ib {
+  position: relative;
+  top:-24px !important;
+  left:8px !important;
+  width: 22px !important;
+  height:22px !important;
+}
+.iib {
+  position: relative;
+  top:-6px !important;
+  left:-12px !important;
+  width: 22px !important;
+  height:22px !important;
+}
+.cardapr{display:grid;grid-template-columns:auto auto;font-weight: bolder;font-size:1.2em}
+.bigapr{font-size: 1em;font-weight:bolder}
+strike{color: pink;font-style: italic;font-weight: lighter;font-size:1.2em}
+ul{font-size:1.1em}
+ul i{font-size:0.85em;}
+/*some*/
+.ddb {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: aqua;
+  border: none;
+  color: #000;
+  text-align: center;
+  font-size: 1.25em;
+  padding: 10px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.ddb span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.ddb span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.ddb:hover span {
+  padding-right: 25px;
+}
+
+.ddb:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.card2{background: #222;color: grey;border:2px solid gray;cursor:not-allowed !important;}
+.cardhide{display:none}
+.card2:hover{transform: none;box-shadow: none}
+.summore{margin: 5px 5% -5px;font-size:0.7em;color: aqua;font-style:italic;display:none}
+.summnum,.summtvl{font-size: 1.1em;color: white;font-weight: bold}
+summary.fore:hover{cursor: cell}
+.sum1num{color: white;font-weight: /*bold*/}
+
+td{font-family:mono;text-align:right;padding:4px 16px;min-width:max-content;min-width: -moz-max-content;font-size:1.25em;}
+td a{color: #fff;text-decoration:underline dotted #1ea;cursor: zoom-in}
+#pfd{font-size: 2.5em;font-weight: bold;}
+thead tr td{font-weight: bold;font-size: 1.2em;text-align: center;text-decoration:underline dotted gold;cursor: alias}
+.toggs{margin: 1%}
+details{font-size: 0.7em}
+td img{height:20px;width: 20px}
+td:first-child, thead tr td{font-family:inherit !important}
+td:nth-last-child(2){display:none}
+td:nth-child(4),td:nth-child(6),td:nth-child(9){text-align: center}
+.topchains img{width:32px;padding:0 4px}
+.topchains:not(.selchain) img{-webkit-filter: grayscale(100%);filter: grayscale(100%);}
+.topchains:hover img{-webkit-filter:none;filter:none;}
+.selchain img{width: 64px}
+#mainstage_inv_ftm td:first-child{text-align: left;font-weight:bold}
+#mainstage_inv_ftm td img{border-radius: 600px}
+@media(min-width:641px){
+  details{font-size: 1rem}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+	<a href="">💰Treasury</a>
+	<a href="https://ftm.guru">FTM.guru</a>
+	<a href="https://kcc.guru">FTM.guru</a>
+	<a href="https://mtv.guru">FTM.guru</a>
+	<!--
+	<a href="">FMC.guru</a>
+	<a href="">Others</a>
+	<a href="">Kompound</a>
+	<a href="">T</a>
+	<a href="">T</a>
+	<a href="">D</a>
+	-->
+</div>
+<div class="body">
+<h1>Multi-Chain Treasury</h1>
+<h3 class="fore">Details about Guru Network's Assets</h3>
+<i>Includes all assets on Fantom & Granary revenues from KCC & MTV.</i>
+
+
+<br><br><br><br><br><br><br><br>
+<div align="center">
+	<span id="pfd">💰<span id="pf">0.000</span></span>
+	<br>Treasury: Net Valuation (USD)<br>
+	<button onclick="cw()" id="btn-connect">Connect a Wallet?</button>
+</div>
+<br><br><br><br>
+<hr class="hr1">
+<br><br><br><br>
+<h2 align="center">Kompound Protocol: Revenue</h2>
+<br><br>
+<div style="overflow:auto;text-align:center">
+	<table align="center">
+		<thead><tr>
+			<td onclick="sortit(0,'mainstage')">⛓
+			<td onclick="sortit(1,'mainstage')">GRAIN#
+			<td onclick="sortit(2,'mainstage')">My Position</td>
+			<td onclick="sortit(3,'mainstage')">Buys</td>
+			<td onclick="sortit(4,'mainstage')">Realized APR</td>
+			<td onclick="sortit(5,'mainstage')">Sells</td>
+			<td onclick="sortit(6,'mainstage')">Value Locked</td>
+			<td onclick="sortit(7,'mainstage')">Balance</td>
+			<td onclick="sortit(8,'mainstage')">Uses</td>
+		</tr></thead>
+		<tbody id="mainstage"></tbody>
+	</table>
+</div>
+
+<br><br><br><br><br><br>
+<h2 align="center">Investments: Fantom</h2>
+<br><br>
+<div style="overflow:auto;text-align:center">
+	<table align="center">
+		<thead><tr>
+			<td onclick="sortit(0,'mainstage_inv_ftm')">De-Fi Protocol</td>
+			<td onclick="sortit(1,'mainstage_inv_ftm')">Net Worth</td>
+			<td onclick="sortit(2,'mainstage_inv_ftm')">Dominance</td>
+		</tr></thead>
+		<tbody id="mainstage_inv_ftm"></tbody>
+	</table>
+</div>
+
+
+<br><br><br><br><br><br>
+<hr class="hr1">
+<br><br><br><br>
+<div align="center"><i>Want to see more?<br><br>
+<a href="mailto:ftm1337@protonmail.com">📧</a> Let us know!</i><br>
+	<div class="lowerbar">
+	<a target="_blank" href="https://twitter.com/ftm1337"><img src="https://ftm.guru/crypto-icons/twitter.svg"></a>
+	<a target="_blank" href="https://t.me/ftm1337"><img src="https://ftm.guru/crypto-icons/telegram.svg"></a>
+	<a target="_blank" href="https://discord.com/invite/QpyfMarNrV"><img src="https://ftm.guru/crypto-icons/discord.svg"></a>
+	</div>
+</div>
+<br><br><br><br><br><br>
+<div onclick="pantvl()">
+	<span style="font-size:2.5em;font-weight:bold" id="pantvl" class="fore">$0.000</span><sup style="font-size:1.2em;position:relative;top: -14px;">⟳</sup><br>
+	(Total Value Locked on FTM.guru)
+</div>
+
+<br><br>
+<div class="lowerbar">Powered by Guru Network.
+<br>
+	<a target="_blank" href="https://kcc.guru">KCC.guru</a>
+	<a target="_blank" href="https://ftm.guru">FTM.guru</a>
+	<a target="_blank" href="https://fmc.guru">FMC.guru</a>
+	<a target="_blank" href="https://fmc.guru">MTV.guru</a>
+	<br><br>
+	<a target="_blank" href="https://kcc.guru"><img src="https://ftm.guru/crypto-icons/kcc.png"></a>
+	<a target="_blank" href="https://ftm.guru"><img src="https://ftm.guru/crypto-icons/64.png"></a>
+	<a target="_blank" href="https://fmc.guru"><img src="https://ftm.guru/crypto-icons/FMC.svg"></a>
+	<a target="_blank" href="https://mtv.guru"><img src="https://ftm.guru/crypto-icons/mtv.png"></a>
+	<a target="_blank" href="https://medium.com/@ftm1337"><img src="https://ftm.guru/crypto-icons/medium.svg"></a>
+	<a target="_blank" href="https://www.coingecko.com/coins/elite-1337"><img src="https://ftm.guru/crypto-icons/gecko.svg"></a>
+	<a target="_blank" href="https://coinmarketcap.com/currencies/elite-1337"><img src="https://ftm.guru/crypto-icons/cmc.svg"></a>
+	<a target="_blank" href="https://defillama.com/protocol/ftmguru"><img src="https://ftm.guru/crypto-icons/defillama.svg"></a>
+	<a target="_blank" href="https://defillama.com/protocol/ftmguru"><img src="https://ftm.guru/crypto-icons/nomics.svg"></a>
+	<!--<a target="_blank" href="https://defillama.com/protocol/kccguru"><img src="https://ftm.guru/crypto-icons/defillama.svg"></a>-->
+</div>
+
+<br><br><br><br><br><hr class="hr1">
+
+</div>
+</body>
+<script src="../web3.min.js"></script>
+<script>
+window.addEventListener('load',async function()
+{
+	fetch("https://openapi.debank.com/v1/user/total_balance?id=0x167d87a906da361a10061fe42bbe89451c2ee584")
+	.then(res=>res.json())
+	.then(rd=>{pfv+=rd.total_usd_value*1e18;$("pf").innerHTML = fornumstd(pfv,18);});
+	//fetch("https://openapi.debank.com/v1/user/complex_protocol_list?id=0x167d87a906da361a10061fe42bbe89451c2ee584")
+	fetch("https://openapi.debank.com/v1/user/simple_protocol_list?id=0x167d87a906da361a10061fe42bbe89451c2ee584")
+	.then(res=>res.json())
+	.then(rd=>{cplx(rd)});
+	_ftm = await new Web3("https://rpc.ftm.tools");
+	_kcc = await new Web3("https://rpc-mainnet.kcc.network");
+	_mtv = await new Web3("https://rpc.mtv.ac");
+	for(i=0;i< grains.ftm.length;i++){ggs(_ftm,grains.ftm[i],"ftm.svg")};
+	for(j=0;j< grains.kcc.length;j++){ggs(_kcc,grains.kcc[j],"kcc.png")};
+	for(k=0;k< grains.mtv.length;k++){ggs(_mtv,grains.mtv[k],"mtv.png")};
+	console.log("PFV for 0x167d87a906da361a10061fe42bbe89451c2ee584")
+	pantvl()
+
+}, false);
+function pantvl()
+{
+	pt=new web3.eth.Contract([{"constant": true,"inputs": [],"name": "tvl","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"}],"0x0786c3a78f5133F08C1c70953B8B10376bC6dCad")
+	pt.methods.tvl().call((e,r)=>{$("pantvl").innerHTML = "$"+(Number(r)/1e18).toLocaleString()});
+}
+function fornum(n,d)
+{
+	_n=(Number(n)/10**Number(d));
+	n_=_n;
+	if(_n>1e18){n_=(_n/1e18).toFixed(2)+"Qt"}
+	else if(_n>1e15){n_=(_n/1e15).toFixed(2)+"Qd"}
+	else if(_n>1e12){n_=(_n/1e12).toFixed(2)+"Tn"}
+	else if(_n>1e9){n_=(_n/1e9).toFixed(2)+"Bn"}
+	else if(_n>1e6){n_=(_n/1e6).toFixed(2)+"Mn"}
+	else if(_n>1e3){n_=(_n/1e3).toFixed(2)+"Th"}
+	else if(_n>0){n_=(_n/1e0).toFixed(5)+""}
+	return(n_);
+}
+function $(_) {return document.getElementById(_);}
+function cw(){}
+function switchchain(v)
+{
+	if(v=="250"){window.location="https://ftm.guru/GRAIN"}
+	if(v=="321"){window.location="https://kcc.guru/kompound"}
+	if(v=="62621"){window.location="https://mtv.guru"}
+}
+function dive()
+{
+	if($("ddb").parentElement.parentElement.getAttribute("open")==null)
+	{
+		$("ddb").parentElement.parentElement.setAttribute("open","");
+		$("ddb").children[0].innerHTML="Deeper Dive"
+	}
+	else
+	{
+		$("ddb").parentElement.parentElement.removeAttribute("open")
+		$("ddb").children[0].innerHTML="Dive Deeper"
+	}
+}
+function togcar()
+{
+	ac2 = document.getElementsByClassName("cardhide");
+	for(i=0;i< ac2.length;i++)
+	{
+		ac2[i].style.display=ac2[i].style.display=="block"?"none":"block"
+	}
+}
+grains=
+{
+		//ID#						ADDRESS								BUYS				SELLS			USES
+	"ftm":	[
+		["2201",	"0x50e66D1232f272B481F349F01b5C6019896A23e3",	["usdc.svg","ftm.svg"],	["knight.svg"], ["knight.svg"]],
+		["2301",	"0xd15d6434aC56007BA85ce89377481964eBDf532a",	["usdc.svg","ftm.svg"],	["wraith.svg"], ["wraith.svg"]],
+		["2303",	"0xFe80Ecb1B879f24B08E3Caa74246D4Ae17fbA53B",	["syf.svg","ftm.svg"],	["wraith.svg"], ["wraith.svg"]],
+		["2501",	"0xE2c82fd8EE829B7309122d1ae63468D0fC323F45",	["spooky.sq.svg"],		["ftm.svg"], 	["xboo.png"]],
+		["2502",	"0xf29C310D60e87bf54DC973DF73D64a339bb944Cb",	["spooky.sq.svg"],		["tusd.svg"], 	["xboo.png"]],
+		["2503",	"0xBc68f64879b26cf34be397fB8b8f0209FEaBbF91",	["spooky.sq.svg"],		["foo.png"], 	["xboo.png"]],
+		["2504",	"0x80aE633a3B909F31BD1beF990b6C642Ca639c7eC",	["spooky.sq.svg"],		["woo.png"], 	["xboo.png"]],
+		["2505",	"0x390505AA41aC3BdF31b36ab72EbBA36CFe6C8c6B",	["spooky.sq.svg"],		["treeb.png"], 	["xboo.png"]],
+		["2506",	"0x2Dcc87751ffF3E250a4dd0037991653472bFfA64",	["spooky.sq.svg"],		["font.png"], 	["xboo.png"]],
+		["2507",	"0xc340b2A90A3BDc0Ad2086E3256A7E9026D03C448",	["spooky.sq.svg"],		["lqdr.png"], 	["xboo.png"]],
+		["2508",	"0xff383254B2070FD335f51c0CA81a10764a713f64",	["spooky.sq.svg"],		["ooe.png"], 	["xboo.png"]],
+		["2509",	"0xE3A6400c6505BCe5B14C47dE4A9f967C638802dd",	["spooky.sq.svg"],		["hnd.png"], 	["xboo.png"]],
+		["2510",	"0xc52a37D46a8a4B10355068f34dE71d5fE791f245",	["spooky.sq.svg"],		["brush.png"], 	["xboo.png"]],
+		["2601",	"0x6eC2Cb84422403e06935ac55910Fa3609F55BCce",	["usdc.svg","mim.svg"],	["shrap.png"], ["bomb.svg"]],
+		["2602",	"0x00bedBdD440ff2eFEC3A6a42230e8D3Bfac63d63",	["bomb.svg","ftm.svg"],	["shrap.png"], ["bomb.svg"]],
+		["2603",	"0x977541676bA8eF35e8116566Bca29FD6C72BA159",	["shrap.png","ftm.svg"],["shrap.png"], ["bomb.svg"]],
+		["2606",	"0x7266dd2fe1D6447E57924BD41450a613a779Da3f",	["shrap.png","bomb.svg"],["shrap.png"], ["bomb.svg"]],
+		["2607",	"0xC7d89a0aA32eb496222f88fA1193566C761b7681",	["sst.png","ftm.svg"],	["shrap.png"], ["bomb.svg"]],
+		["2608",	"0xD42C91A330425858BFD78e291365E1b41f56a2Ff",	["usdc.svg","ftm.svg"],	["shrap.png"], ["bomb.svg"]],
+		["2609",	"0x15FcCE81d8f5B4847e0F65243BFDA85972c98474",	["btc.svg","ftm.svg"],	["shrap.png"], ["bomb.svg"]],
+		["2610",	"0x2b5005f9F08f8A899c7186BD90071da4a131dD46",	["eth.svg","ftm.svg"],	["shrap.png"], ["bomb.svg"]],
+		["2611",	"0x329AAcBe71666692354272384e38Cb03Df69a71b",	["shrap.png","kek.png"],["shrap.png"], ["bomb.svg"]],
+		["2613",	"0x576Be556eeA4F6eD4E6EF248c163BA58340c3091",	["shrap.png","sspell.png"],	["shrap.png"], ["bomb.svg"]],
+		["2614",	"0xC95786f122926400da2A261eE5a8424019e7D416",	["shrap.png","slurp.png"],	["shrap.png"], ["bomb.svg"]],
+		["2615",	"0x462740150DDAb5816f6007ed179C8013fB7f1e17",	["shrap.png","nice.svg"],	["shrap.png"], ["bomb.svg"]],
+		["2616",	"0x4FfD42099576Bda1F3aC508E6192E4BD89125bed",	["shrap.png","coffin.png"],	["shrap.png"], ["bomb.svg"]],
+		["2617",	"0x0E02D360784234716a8BDeE721018ae699C1F524",	["shrap.png","smart.svg"],	["shrap.png"], ["bomb.svg"]],
+		["2701",	"0x5E62e97A73258947e1745071Ba342C6169A25E80",	["usdc.svg","ftm.svg"],	["dmd.svg"],	["dmd.svg"]],
+		["2901",	"0xfD5d0aB5404dd472975922501f670d194732577B",	["ftm.svg","64.png"],	["nips.svg"], ["nips.svg"]],
+		["4101",	"0xD7627edF607C49F525212fC09d650A91a9B222e1",	["ftm.svg"],			["vedao.png"],	["vedao.png"]],
+		["4102",	"0x1b70E038f9eC9A8f979B4e6D8CD0Dc85df677CB2",	["eth.svg"],			["vedao.png"],	["vedao.png"]],
+		["4103",	"0x48B628AC7F6Fa84298c6b3198130C2068073AB01",	["yfi.svg"],			["vedao.png"],	["vedao.png"]],
+		["4104",	"0xd072046b0928b9Eb6B2Afa9D80cbDFE759Ef3A8B",	["usdc.svg"],			["vedao.png"],	["vedao.png"]],
+		["4105",	"0x69B83634B6E7C2bfFAb8B1ae3B8498d2dab6D51f",	["mim.svg"],			["vedao.png"],	["vedao.png"]],
+		["4106",	"0x2938F27687Ae2ad54db2B91B4B836B6ADD15AC8f",	["frax.svg"],			["vedao.png"],	["vedao.png"]],
+		["4107",	"0xe125C9c6560c17f4dF8774dB6B9e5d2b3BF9947f",	["usdc.svg","vedao.png"],["vedao.png"],	["vedao.png"]],
+		["4108",	"0xE880A7F6C9C326477A7D98e736E1524A7F8D4394",	["usdc.svg","vedao.png"],["vedao.png"],	["vedao.png"]],
+		["4201",	"0xA2B1f90A6CF0FD5451E0fE7ED67331EC15Bd1aAB",	["ftm.svg"],			["oxd.webp"],	["oxd.webp"]],
+		["4202",	"0x27881D9Ee5F4769AdE8762E93c503D3a7C59769e",	["eth.svg"],			["oxd.webp"],	["oxd.webp"]],
+		["4203",	"0xC255FCEFf6967B30E1A467FA4e97560ae5fE54bA",	["btc.svg"],			["oxd.webp"],	["oxd.webp"]],
+		["4204",	"0x27DaBA6E82A23C5f9C264257b417D3b99435469d",	["usdc.svg"],			["oxd.webp"],	["oxd.webp"]],
+		["4205",	"0x8885dAa97a0A6590740B6139FD81613D5A543C20",	["dai.svg"],			["oxd.webp"],	["oxd.webp"]],
+		["4206",	"0xa638Fe74968c9B95E2E3868f9487390087Ef80aC",	["mim.svg"],			["oxd.webp"],	["oxd.webp"]],
+		["4209",	"0x2E24ABF15ECdA2D58E9840456D397CfbA30c9895",	["lqdr.png"],			["oxd.webp"],	["oxd.webp"]],
+		["4212",	"0x4b7bfaF14a961D0033a2f65d07523b8321D7e477",	["tomb.png"],			["oxd.webp"],	["oxd.webp"]],
+		["4301",	"0xD41835b49e90A6438C363e4A3613F4A0E5656c55",	["defy.png","usdc.svg"],["defy.png"], 	["defy.png"]],
+		["4302",	"0xe46DE1EbD9760975841B7B3Af0DF8612b7566B58",	["defy.png","ftm.svg"],	["defy.png"],	 ["defy.png"]],
+		["4303",	"0x6812e3b614f3dE965821aa1f7A8CA1714cB09a66",	["defy.png","slurp.png"],["defy.png"],	 ["defy.png"]],
+		["4401",	"0x565468cFeDE97E7E936B7B0deD53A5DC60623709",	["elk.svg","ftm.svg"],	["elk.svg"], ["elk.svg"]],
+		["4402",	"0xb781e75605d0F74cfBd65E8BF48a9FF57E5bDe78",	["elk.svg","usdc.svg"],	["elk.svg"], ["elk.svg"]],
+		["4501",	"0xAFEE7A332989261893b11544A2b4622d77Dc8404",	["dai.svg","mai.svg"],	["protofi.png"], ["protofi.png"]],
+		["4601",	"0x812C8e4744f40Ce5a01849154308509Abdb7c975",	["dai.svg","usdc.svg"],	["wigo.svg"], ["wigo.svg"]],
+		["4801",	"0xEfAE80d23f623f5Adbb1324110b8105DbBd8f82c",	["ring.svg","usdc.svg"],["beets.png","ring.svg","usdc.svg"], ["beets.png"]],
+		["4802",	"0xaE51E9697F72937b8E4D25f87123f1ccF0C217CF",	["shrap.png","ftm.svg"],["beets.png"], ["beets.png"]],
+	],
+	"kcc" : [
+		["3101",	"0xddca793284b546cce25e03af53c2ac0f949a8b8d",	["bnb.svg","kcs.svg"],	["kud.png"],	["kudex.png"]],
+		["3102",	"0xf5be9634549fead60f7dce272fe9a4b96c3b1926",	["kcs.svg","usdt.svg"],	["kud.png"],	["kudex.png"]],
+		["3103",	"0x727A82566ff09AC80ce9D33651197dDCDaFd5a3D",	["kcs.svg","usdc.svg"],	["kud.png"],	["kudex.png"]],
+		["3201",	"0x5Bb3895D4faC7Ce3AfBb163A9e0a9364aa7AA07d",	["kcs.svg","usdt.svg"],	["kus.png"],	["kuswap.svg"]],
+		["3202",	"0x974822c6fd06709709fbf880d29352EF19A7CF88",	["kcs.svg","usdc.svg"],	["kus.png"],	["kuswap.svg"]],
+		["3203",	"0x2A5C9F52b0211Ed72f776a3692de192Cef8B160F",	["kcs.svg","dai.svg"],	["kus.png"],	["kuswap.svg"]],
+		["3204",	"0x03010C2C9E5eC5779fF744e79A86921d58486085",	["kcs.svg","btc.svg"],	["kus.png"],	["kuswap.svg"]],
+		["3301",	"0x3b143382d267bd0652d67c9f43d48c73476a28f8",	["elk.svg","kcs.svg"],	["elk.svg"],	["elk.svg"]],
+		["3302",	"0x6AeBfc883bb404D32441DD103a8dA7b979901594",	["elk.svg","usdc.svg"],	["elk.svg"],	["elk.svg"]],
+	],
+	"mtv" : [
+		["6101",	"0xc295f619afc2b8543d91c8970ea4c0726f197250",	["moon.png","mtv.png"],	["moon.png"],	["moonswap.png"]],		//	mtv-moon
+		["6102",	"0x9d9682577CA889c882412056669bd936894663fd",	["mtv.png","busd.svg"],	["moon.png"],	["moonswap.png"]],		//	mtv-busd
+		["6103",	"0x2696f94f11dfF0d77875E2652FCdB537274B9CE7",	["moon.png","busd.svg"],["moon.png"],	["moonswap.png"]],		//	moon-busd
+		["6201",	"0xec8fc44425a1F6c4d41F590E47472a4F0Ee26D55",	["htz.png","mtv.png"],	["htz.png"],	["htz.png"]],			//	htz-mtv
+	]
+};
+pfv=0
+async function ggs(w3,g,ct)
+{
+	let web3 = w3;
+	G = new web3.eth.Contract(grabi,g[1]);
+	//let info = G.methods.info().call()
+	url=web3.currentProvider.host;
+	data={"jsonrpc":"2.0","id":9,"method":"eth_call","params":[{"data":"0x370158ea","to":g[1]},"latest"]}
+	let info = fetch(url, { method: 'POST', body: JSON.stringify(data), headers: { 'Content-Type': 'application/json'} }).then(r=>r.json()).then(r=>r.result);
+	let gtvl = G.methods.tvl().call()
+	let tsup = G.methods.totalSupply().call()
+	let gugb = 0;
+	let sit = 3;
+	gugb = await G.methods.balanceOf("0x167d87a906da361a10061fe42bbe89451c2ee584").call();
+	$("btn-connect").style.display="none";
+	addCSS("td:nth-child(2){display:block}");
+	sit = 2
+	Promise.all([info,gtvl,tsup,gugb])
+	.then(gd=>{
+		gtr = document.createElement("tr");
+		if(gd[1]==0){gd[1]=1}
+		if(gd[2]==0){gd[2]=1}
+		oi=[];
+		if(gd[0]==undefined){oi=[1,1,1]}
+		else{for(i=0;i< (gd[0].length-2)/64;i++){oi.push(Number("0x"+gd[0].substr(2+64*i,64)))}}
+		gtr.innerHTML = `
+			<td><img src="https://ftm.guru/icons/${ct}"></td>
+			<td><a href="${g[0]}.html" target="_blank">🌾#${g[0]}</a></td>
+			<td>$${((Number(gd[3])/Number(gd[2]))*Number(gd[1])/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})}</td>
+			<td>${giu(g[2])}</td>
+			<td>${(oi[2]/1e18).toFixed(1)}%</td>
+			<td>${giu(g[3])}</td>
+			<td>$${(Number(gd[1])/1e18).toLocaleString(undefined,{minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+			<td>${fornumstd(Number(gd[3]),18)}🌾</td>
+			<td>${giu(g[4])}</td>
+		`;
+		pfv += ((Number(gd[3])/Number(gd[2]))*Number(gd[1]));
+		$("pf").innerHTML = fornumstd(pfv,18);
+		$("mainstage").append(gtr);
+		sortit(sit,'mainstage');sortit(sit,'mainstage');
+	})
+}
+function cplx(rdd)
+{
+	for(l=0;l< rdd.length;l++)
+	{
+		gtrdd = document.createElement("tr");
+		gtrdd.innerHTML = `
+			<td><img src="${rdd[l].logo_url}"> ${rdd[l].name}</td>
+			<td>${(rdd[l].net_usd_value).toLocaleString(undefined,{minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+			<td>${rdd[l].tvl==0?"?":(rdd[l].net_usd_value/rdd[l].tvl*100).toFixed(6)}%</td>
+		`;
+		$("mainstage_inv_ftm").append(gtrdd)
+	}
+	sortit(1,'mainstage_inv_ftm');sortit(1,'mainstage_inv_ftm');
+}
+function giu(ari)
+{
+	rst = ""
+	//console.log("ari is", ari)
+	for(i=0;i< ari.length;i++)
+	{rst+= (`<img src="https://ftm.guru/icons/${ari[i]}">`)}
+	return rst
+}
+function fornumstd(n,d){return Number((Number(n)/10**d).toFixed(2)).toLocaleString()}
+grabi=[{"inputs":[{"internalType":"address","name":"_w","type":"address"},{"internalType":"address","name":"_m","type":"address"},{"internalType":"address","name":"_e","type":"address"},{"internalType":"uint8","name":"_p","type":"uint8"},{"internalType":"address","name":"_R","type":"address"},{"internalType":"address[]","name":"_rA","type":"address[]"},{"internalType":"address[]","name":"_rB","type":"address[]"},{"internalType":"string","name":"_id","type":"string"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"src","type":"address"},{"indexed":true,"internalType":"address","name":"guy","type":"address"},{"indexed":false,"internalType":"uint256","name":"wad","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Compounded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Staked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"src","type":"address"},{"indexed":true,"internalType":"address","name":"dst","type":"address"},{"indexed":false,"internalType":"uint256","name":"wad","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Withdrawn","type":"event"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"Eliteness","outputs":[{"internalType":"address","name":"ELITE","type":"address"},{"internalType":"uint256","name":"ELITES","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"allnums","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"guy","type":"address"},{"internalType":"uint256","name":"wad","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"guy","type":"address"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_mw","type":"uint256"},{"internalType":"uint256","name":"_wi","type":"uint256"},{"internalType":"uint256","name":"_pf","type":"uint256"},{"internalType":"address","name":"_t","type":"address"},{"internalType":"uint256","name":"_df","type":"uint256"}],"name":"config","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"dao","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"declareEmergency","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"}],"name":"deposit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"doHardWork","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"earn","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"u","type":"address"}],"name":"eliteness","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"emergency","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"}],"name":"emergencyWithdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"id","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"info","outputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"mc","outputs":[{"internalType":"contract IMasterchef","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"n","type":"uint256"}],"name":"pullElite","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"elite","type":"address"},{"internalType":"uint256","name":"elites","type":"uint256"}],"name":"pushElite","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"uint256","name":"tokens","type":"uint256"}],"name":"rescue","outputs":[{"internalType":"bool","name":"success","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"revokeEmergency","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"routeA","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"routeB","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"router","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"salvage","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"dst","type":"address"},{"internalType":"uint256","name":"wad","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"src","type":"address"},{"internalType":"address","name":"dst","type":"address"},{"internalType":"uint256","name":"wad","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"treasury","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"tvl","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"utvl","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"want","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"}],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+function sortit(n,id) {
+  var t, r, z, i, x, y, v, b, c = 0;
+  t = document.getElementById(id);
+  z = true;
+  b = "a";
+  while (z) {
+    z = false;
+    r = t.rows;
+    for (i = 0; i < (r.length - 1); i++) {
+      v = false;
+      x = (r[i].getElementsByTagName("TD")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
+      if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
+      y = (r[i + 1].getElementsByTagName("TD")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
+      if(isFinite(y)){y=Number(y)}else{y=y.toLowerCase()}
+      if (b == "a") {
+        if ((x) > (y)) {
+          v= true;
+          break;
+        }
+      } else if (b == "d") {
+        if ((x) < (y)) {
+          v = true;
+          break;
+        }
+      }
+    }
+    if (v) {
+      r[i].parentNode.insertBefore(r[i + 1], r[i]);
+      z = true;
+      c ++;
+    } else {
+      if (c == 0 && b == "a") {
+        b = "d";
+        z = true;
+      }
+    }
+  }
+}
+const addCSS = s => document.head.appendChild(document.createElement("style")).innerHTML=s;
+async function cw()
+{
+	if(!(window.ethereum)){console.log("Metamask not detected!");return(0)}
+	if(!(Number(window.ethereum.chainId)==250)){console.log("Wrong network detected!");return(0)}
+	await window.ethereum.enable();
+	$("btn-connect").innerHTML= (window.ethereum.selectedAddress).substr(0,10) +"..."+(window.ethereum.selectedAddress).substr(34);
+	$("btn-connect").style.display="none";
+	var sheet = document.createElement('style');
+	$("btn-connect").style.display="none";
+	addCSS("td:nth-child(2){display:block}");
+	console.log("found user:",(window.ethereum.selectedAddress), "printing portfolio")
+	$("mainstage").innerHTML = ""
+	for(i=0;i< grains.length;i++){ggs(grains[i])}
+}
+</script>
+</html>
