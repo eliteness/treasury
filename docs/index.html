@@ -442,12 +442,14 @@ td:nth-child(4),td:nth-child(6),td:nth-child(9){text-align: center}
 			<hr>
 			fBEETS Owned
 		</div>
+		<!--
 		<div class="card">
 			<br>
 			<span id="gov_fbeets_pow"> ? </span>
 			<hr>
 			Voting Power
 		</div>
+		-->
 		<div class="card">
 			<br>
 			<span id="gov_fbeets_dom"> ? </span>
@@ -466,7 +468,7 @@ td:nth-child(4),td:nth-child(6),td:nth-child(9){text-align: center}
 
 
 	<br><br><br><br>
-	<h4><img src="https://ftm.guru/icons/beluga.svg" style="position:relative;top:6px" height="32px"> Beluga.fi</h4>
+	<h4><img src="https://ftm.guru/icons/beluga.png" style="position:relative;top:6px" height="32px"> Beluga.fi</h4>
 	We're yet to acquire Governance Rights at Beluga but will soon have some this fortnight.
 	<!--
 	We <b>Lock PANIC</b> perpetually by extending upto 2 years.
@@ -844,7 +846,7 @@ function gov_r()
 		$("gov_solidly_vl").innerHTML = (Number(solid[0].amount)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
 		$("gov_solidly_ul").innerHTML = (new Date(Number(solid[0].end)*1e3)).toDateString()
 		$("gov_solidly_pow").innerHTML = (Number(solid[1])/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		$("gov_solidly_dom").innerHTML = (Number(solid[1]) / Number(solid[2]) *100).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})+" %"
+		$("gov_solidly_dom").innerHTML = (Number(solid[1]) / Number(solid[2]) *100).toLocaleString(undefined,{minimumFractionDigits: 8, maximumFractionDigits: 8})+" %"
 	})
 
 	vlsex = new w3ftm.eth.Contract([{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"userBalance","outputs":[{"internalType":"uint256","name":"balance","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getActiveUserLocks","outputs":[{"internalType":"uint256[2][]","name":"lockData","type":"uint256[2][]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"userWeight","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalWeight","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}],"0xdcc208496b8fcc8e99741df8c6b8856f1ba1c71f")
@@ -863,8 +865,41 @@ function gov_r()
 		$("gov_solidex_vl").innerHTML = (Number(totsex)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
 		$("gov_solidex_ul").innerHTML = (new Date(Date.now()+86400000*7*maxtl)).toDateString()
 		$("gov_solidex_pow").innerHTML = (Number(solidex[1])/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		$("gov_solidex_dom").innerHTML = (Number(solidex[1]) / Number(solidex[2]) *100).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})+" %"
+		$("gov_solidex_dom").innerHTML = (Number(solidex[1]) / Number(solidex[2]) *100).toLocaleString(undefined,{minimumFractionDigits: 8, maximumFractionDigits: 8})+" %"
 	})
+
+	vlpanic = new w3ftm.eth.Contract([{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"lockedBalances","outputs":[{"internalType":"uint256","name":"total","type":"uint256"},{"internalType":"uint256","name":"unlockable","type":"uint256"},{"internalType":"uint256","name":"locked","type":"uint256"},{"components":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint256","name":"unlockTime","type":"uint256"}],"internalType":"struct MultiFeeDistribution.LockedBalance[]","name":"lockData","type":"tuple[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lockedSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}],"0x536b88cc4aa42450aab021738bf22d63ddc7303e")
+	panic_locked = vlpanic.methods.lockedBalances("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
+	panic_global_power = vlpanic.methods.lockedSupply().call()
+	Promise.all([panic_locked,panic_global_power])
+	.then(panic => {console.log(panic)
+		totpanic = 0; maxtl = 0;
+		for(i=0;i< panic[0].lockData.length;i++)
+		{
+			if(Number(panic[0].lockData[i][1])>maxtl){maxtl=Number(panic[0].lockData[i][1]);}
+			totpanic+=Number(panic[0][i][0])
+		}
+		//$("gov_panic_vl").innerHTML = (Number(panic[0].total)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
+		$("gov_panic_vl").innerHTML = (Number(totpanic)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
+		$("gov_panic_ul").innerHTML = (new Date(maxtl)).toDateString()
+		$("gov_panic_pow").innerHTML = (Number(panic[0].locked)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
+		$("gov_panic_dom").innerHTML = (Number(panic[0].locked) / Number(panic[2]) *100).toLocaleString(undefined,{minimumFractionDigits: 8, maximumFractionDigits: 8})+" %"
+	})
+
+	fbeets = new w3ftm.eth.Contract([{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}],"0xfcef8a994209d6916eb2c86cdd2afd60aa6f54b1")
+	fbeets_locked = fbeets.methods.balanceOf("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
+	fbeets_global_power = fbeets.methods.totalSupply().call()
+	Promise.all([fbeets_locked,fbeets_global_power])
+	.then(fbeets => {console.log(fbeets)
+		$("gov_fbeets_vl").innerHTML = (Number(fbeets[0])/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
+		//$("gov_fbeets_ul").innerHTML = (new Date(maxtl)).toDateString()
+		//$("gov_fbeets_pow").innerHTML = (Number(fbeets[0].locked)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
+		$("gov_fbeets_dom").innerHTML = (Number(fbeets[0]) / Number(fbeets[1]) *100).toLocaleString(undefined,{minimumFractionDigits: 8, maximumFractionDigits: 8})+" %"
+	})
+
+
+
+
 }
 </script>
 </html>
