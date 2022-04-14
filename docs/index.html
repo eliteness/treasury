@@ -235,9 +235,17 @@ td:nth-child(4),td:nth-child(6),td:nth-child(9){text-align: center}
 <br><br><br><br><br><br>
 
 <h2>Contents of Report</h2>
-<h3 onclick="window.location='#a_birdsee'"> ― Distribution Overview</h3>
-<h3 onclick="window.location='#a_kompound'"> ― Kompound Protocol</h3>
-<h3 onclick="window.location='#a_gov'"> ― Governance Powers</h3>
+<h2 class="fore" onclick="window.location='#a_birdsee'"> ― Distribution Overview</h2>
+<h2 class="fore" onclick="window.location='#a_gov'"> ― Governance Powers</h2>
+
+<div style="margin-left:42px">
+	<li>Solidly</li>
+	<li>Solidex</li>
+	<li>PanicSwap</li>
+	<li>BeethovenX</li>
+	<li>ProtoFi</li>
+</div>
+<h2 class="fore" onclick="window.location='#a_kompound'"> ― Kompound Protocol</h2>
 
 <br><br><br><br>
 <hr class="hr1">
@@ -476,6 +484,46 @@ td:nth-child(4),td:nth-child(6),td:nth-child(9){text-align: center}
 	<br>Voting Power: <span id="gov_panic_power"></b>
 	<br>Global Dominance: <span id="gov_panic_dominance"></b>
 	-->
+
+
+	<br><br><br><br>
+	<h3><img src="https://ftm.guru/icons/protofi.png" style="position:relative;top:6px" height="32px"> ProtoFi.app</h3>
+	<span class="fore">We lock ELCT into <b>veELCT</b>.</span><br><br>
+
+	<div class="cards">
+		<div class="card">
+			<br>
+			<span id="gov_proto_vl"> ? </span>
+			<hr>
+			ELCT Locked
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_proto_pow"> ? </span>
+			<hr>
+			Voting Power
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_proto_ul"> ? </span>
+			<hr>
+			Unlock Date
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_proto_dom"> ? </span>
+			<hr>
+			Global Dominance
+		</div>
+		<!--
+		<div class="card">
+			<br>
+			<span id="gov_fbeets_mv"> ? </span>
+			<hr>
+			Market Value (USD)
+		</div>
+		-->
+	</div>
 </div gov>
 
 <br><br><br><br><br><br>
@@ -842,7 +890,7 @@ function gov_r()
 	solid_power = venft.methods.balanceOfNFT(76).call()
 	solid_global_power = venft.methods.totalSupply().call()
 	Promise.all([solid_locked,solid_power,solid_global_power])
-	.then(solid => {console.log(solid)
+	.then(solid => {console.log("solid",solid)
 		$("gov_solidly_vl").innerHTML = (Number(solid[0].amount)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
 		$("gov_solidly_ul").innerHTML = (new Date(Number(solid[0].end)*1e3)).toDateString()
 		$("gov_solidly_pow").innerHTML = (Number(solid[1])/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
@@ -855,7 +903,7 @@ function gov_r()
 	solidex_power = vlsex.methods.userWeight("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
 	solidex_global_power = vlsex.methods.totalWeight().call()
 	Promise.all([solidex_locked,solidex_power,solidex_global_power])
-	.then(solidex => {console.log(solidex)
+	.then(solidex => {console.log("solidex",solidex)
 		totsex = 0; maxtl = 0;
 		for(i=0;i< solidex[0].length;i++)
 		{
@@ -872,7 +920,7 @@ function gov_r()
 	panic_locked = vlpanic.methods.lockedBalances("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
 	panic_global_power = vlpanic.methods.lockedSupply().call()
 	Promise.all([panic_locked,panic_global_power])
-	.then(panic => {console.log(panic)
+	.then(panic => {console.log("panic",panic)
 		totpanic = 0; maxtl = 0;
 		for(i=0;i< panic[0].lockData.length;i++)
 		{
@@ -890,14 +938,24 @@ function gov_r()
 	fbeets_locked = fbeets.methods.balanceOf("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
 	fbeets_global_power = fbeets.methods.totalSupply().call()
 	Promise.all([fbeets_locked,fbeets_global_power])
-	.then(fbeets => {console.log(fbeets)
+	.then(fbeets => {console.log("fbeets",fbeets)
 		$("gov_fbeets_vl").innerHTML = (Number(fbeets[0])/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
 		//$("gov_fbeets_ul").innerHTML = (new Date(maxtl)).toDateString()
 		//$("gov_fbeets_pow").innerHTML = (Number(fbeets[0].locked)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
 		$("gov_fbeets_dom").innerHTML = (Number(fbeets[0]) / Number(fbeets[1]) *100).toLocaleString(undefined,{minimumFractionDigits: 8, maximumFractionDigits: 8})+" %"
 	})
 
-
+	veELCT = new w3ftm.eth.Contract([{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"locked__end","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"name":"locked","outputs":[{"type":"uint256","name":"amountPROTO"},{"type":"uint256","name":"amountELCT"},{"type":"int128","name":"amount"},{"type":"uint256","name":"end"}],"inputs":[{"type":"address","name":"arg0"}],"stateMutability":"view","type":"function","gas":5434}],"0x95d15dc470a27a33a39d2f6e952146348df2b347")
+	proto_locked = veELCT.methods.locked("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
+	proto_power = veELCT.methods.balanceOf("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
+	proto_global_power = veELCT.methods.totalSupply().call()
+	Promise.all([proto_locked,proto_power,proto_global_power])
+	.then(proto => {console.log("proto",proto)
+		$("gov_proto_vl").innerHTML = (Number(proto[0].amountELCT)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
+		$("gov_proto_ul").innerHTML = (new Date(Number(proto[0].end)*1e3)).toDateString()
+		$("gov_proto_pow").innerHTML = (Number(proto[1])/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
+		$("gov_proto_dom").innerHTML = (Number(proto[1]) / Number(proto[2]) *100).toLocaleString(undefined,{minimumFractionDigits: 8, maximumFractionDigits: 8})+" %"
+	})
 
 
 }
