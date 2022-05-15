@@ -781,7 +781,7 @@ async function ggs(w3,g,ct)
 		gtr.innerHTML = `
 			<td><img src="https://ftm.guru/icons/${ct}"></td>
 			<td><a href="https://ftm.guru/GRAIN/${g[0]}.html" target="_blank">🌾#${g[0]}</a></td>
-			<td>$${((Number(gd[3])/Number(gd[2]))*Number(gd[1])/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})}</td>
+			<td>$${((Number(gd[3])/Number(gd[2]))*Number(gd[1])/1e18)}</td>
 			<td>${giu(g[2])}</td>
 			<td>${(oi[2]/1e18).toFixed(1)}%</td>
 			<td>${giu(g[3])}</td>
@@ -925,7 +925,7 @@ function gov_r()
 		for(i=0;i< panic[0].lockData.length;i++)
 		{
 			if(Number(panic[0].lockData[i].unlockTime)>maxtl){maxtl=Number(panic[0].lockData[i].unlockTime);}
-			totpanic+=Number(panic[0][i].amount)
+			totpanic+=Number(panic[0].lockData[i].amount)
 		}
 		$("gov_panic_vl").innerHTML = (Number(panic[0].total)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
 		//$("gov_panic_vl").innerHTML = (Number(totpanic)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
