@@ -1,963 +1,153 @@
 <!doctype html>
-<html>
-<meta charset="UTF-8">
+<html lang="en">
 <head>
-<meta name="description" content="Guru Network's Multi-Chain Treasury">
-<meta name="keywords" content="Multi-Chain, Treasury, Granary, Finance, Compound, Vault, Interest, Decentralized Finance, defi, yield farming, Guru Network, Fantom Opera, FTM">
-<title>Guru Network's Treasury - FTM.guru</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="https://ftm.guru/img/64.png"/>
-<style>
-*{
-scroll-behavior: smooth !important;
-}
-body {
-  background: linear-gradient(90deg, #17082f 21px, transparent 1%) center, linear-gradient(#17082f 21px, transparent 1%) center, #a799cc;
-  background-size: 22px 22px;
-  color: white;
-  margin:auto;
-  font-family:helvetica nueve, helvetica, robotica, ubuntu, roboto, sans-serif;
-}
-.body{
-  margin: 8%
-}
-.topbar {
-  background: #6f42c1;
-  width: calc(100%-10px);
-  display:flex;
-  flex-wrap: wrap;
-  position:sticky;
-  top:0;
-  z-index: 1;
-  border-bottom: 8px ridge #17082f
-}
-.topbar a, details a {
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-  font-weight: bolder;
-  margin: auto
-}
-.topbar a:first-child{font-size: 2em}
-h1{font-size: 3em}
-h2{}
-h1,h2,h3{color:#32fbe2;}
-
-.lowerbar{
-  font-size: 1.25em;
-  font-weight: bolder;
-}
-.lowerbar a{
-  font-size: 0.75em;
-  font-weight: lighter;
-  padding: 10px 10px 10px 0px;
-  color:#32fbe2;
-  text-decoration: none
-}
-.lowerbar img{width:24px}
-.lowerbar .subimg{width:16px;height:16px;position: relative;right:9px;top:4px;margin-right:-11px}
-.hr1{
-  color: transparent;
-  border-top: 16px dotted #ea39b8;
-  max-width: 50%
-}
-.fore{color: gold !important;font-weight:400;font-size:1.337em}
-.cards{
-  display: flex;
-  flex-wrap: wrap;
-}
-.card{
-  margin:10px 20px 10px 0px;
-  min-width: 220px;
-  padding: 0px 10px 10px 10px;
-  border: 2px solid #1f5;
-  border-radius: 5px;
-  background:rgba(16,240,80,0.2)
-}
-.card hr{color: #1f5;border:dashed 1px }
-.card sub{font-size: 1em}
-.card sup{font-size: 1.5em}
-.card:hover{
-  transform: translate(5px,-5px);
-  box-shadow: -5px 5px 5px rgba(16,240,80,0.75);
-  transition: 0.25s;
-  background: rgba(16,240,80,0.1);
-}
-.card span{font-size: 2em}
-.card a{text-decoration: none;color: inherit}
-.ki img {
-  position: relative;
-  right:0;
-  left: 8px;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  box-shadow: 0 0 2px 2px rgba(16,240,80,1);
-}
-.cardapr span:first-child{font-size: 1em}
-.ki img:first-child{left: 16px}
-.ki{text-align: right}
-.fn{
-  max-height: 28px;
-  position: relative;
-  top: -5px;
-  font-size:1em;
-}
-.fn img {
-  position: relative;
-  top:10px;
-  margin-right: 8px;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  box-shadow: 0 0 2px 2px rgba(16,180,240,0.5);
-}
-.fn img:nth-child(2) {margin: 0 -10px}
-.ib {
-  position: relative;
-  top:-24px !important;
-  left:8px !important;
-  width: 22px !important;
-  height:22px !important;
-}
-.iib {
-  position: relative;
-  top:-6px !important;
-  left:-12px !important;
-  width: 22px !important;
-  height:22px !important;
-}
-.cardapr{display:grid;grid-template-columns:auto auto;font-weight: bolder;font-size:1.2em}
-.bigapr{font-size: 1em;font-weight:bolder}
-strike{color: pink;font-style: italic;font-weight: lighter;font-size:1.2em}
-ul{font-size:1.1em}
-ul i{font-size:0.85em;}
-/*some*/
-.ddb {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: aqua;
-  border: none;
-  color: #000;
-  text-align: center;
-  font-size: 1.25em;
-  padding: 10px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.ddb span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.ddb span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.ddb:hover span {
-  padding-right: 25px;
-}
-
-.ddb:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-.card2{background: #222;color: grey;border:2px solid gray;cursor:not-allowed !important;}
-.cardhide{display:none}
-.card2:hover{transform: none;box-shadow: none}
-.summore{margin: 5px 5% -5px;font-size:0.7em;color: aqua;font-style:italic;display:none}
-.summnum,.summtvl{font-size: 1.1em;color: white;font-weight: bold}
-summary.fore:hover{cursor: cell}
-.sum1num{color: white;font-weight: /*bold*/}
-
-td{font-family:mono;text-align:right;padding:4px 16px;min-width:max-content;min-width: -moz-max-content;font-size:1.25em;}
-td a{color: #fff;text-decoration:underline dotted #1ea;cursor: zoom-in}
-#pfd{font-size: 2.5em;font-weight: bold;}
-thead tr td{font-weight: bold;font-size: 1.2em;text-align: center;text-decoration:underline dotted gold;cursor: alias}
-.toggs{margin: 1%}
-details{font-size: 0.7em}
-td img{height:32px;width: 32px}
-td:first-child, thead tr td{font-family:inherit !important}
-td:nth-last-child(2){display:none}
-td:nth-child(4),td:nth-child(6),td:nth-child(9){text-align: center}
-.topchains img{width:32px;padding:0 4px}
-.topchains:not(.selchain) img{-webkit-filter: grayscale(100%);filter: grayscale(100%);}
-.topchains:hover img{-webkit-filter:none;filter:none;}
-.selchain img{width: 64px}
-#mainstage_inv_ftm td:first-child{text-align: left;font-weight:bold}
-#mainstage_inv_ftm td img{border-radius: 600px}
-.govdiv .cards .card span{font-size: 1.25em;font-weight:bold}
-@media(min-width:641px){
-  details{font-size: 1rem}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Treasury | Guru Network</title>
+    <meta name="description" content="Treasury - Powered by Guru Network!">
+    <meta name="keywords" content="eliteness.network">
+    <link rel="shortcut icon" href="https://ftm.guru/icons/lock.svg">
+    <link rel="stylesheet" href="index.css"/>
 </head>
 <body>
-<div class="topbar">
-	<a href="">💰Treasury</a>
-	<a href="https://ftm.guru">FTM.guru</a>
-	<a href="https://kcc.guru">FTM.guru</a>
-	<a href="https://mtv.guru">FTM.guru</a>
-	<!--
-	<a href="">FMC.guru</a>
-	<a href="">Others</a>
-	<a href="">Kompound</a>
-	<a href="">T</a>
-	<a href="">T</a>
-	<a href="">D</a>
-	-->
-</div>
-<div class="body">
-<h1>Multi-Chain Treasury</h1>
-<h3 class="fore">Details about Guru Network's Assets</h3>
-<i>Learn more about the Resources and Powers of the Guru Network.</i>
+
+    <div id="note" class="overlay">
+        <div class="popup">
+            <a class="close" href="#">&times;</a>
+            <div class="content" id="content1">
+                Welcome!
+            </div>
+        </div>
+    </div>
+
+    <div class="topnav">
+        <div class="topnav-left">
+            <a href="https://eliteness.network/elocks">
+                <img src="https://ftm.guru/icons/64.png" alt="Logo" height="32px">
+            </a>
+            <a href="https://eliteness.network">eliteness.network</a>
+        </div>
+        <div class="topnav-right">
+            <p id="p_cw">
+                <span id="cw" onclick="cw()"><span id="cw_og" class="equal-gradient">Connect wallet</span></span>
+            </p>
+        </div>
+    </div>
+
+    <div class="subnav" style="display:none">
+        <div class="subnav-link"><a href="#a-trade">Trade</a></div>
+        <div class="subnav-link"><a href="#a-order">Orderbook</a></div>
+        <div class="subnav-link"><a href="#a-addlp">Liquidity</a></div>
+        <div class="subnav-link"><a href="#a-posit">Positions</a></div>
+        <div class="subnav-link"><a href="https://eliteness.network/fertilizer">Farm & Earn</a></div>
+    </div>
+
+    <div id="main-area">
+        <div class="headline">
+            <div class="headline-keyword">Treasury</div>
+            Historical Snapshots of Treasury
+        </div>
+
+        <!-- <div class="page-heading">
+            <img src="https://ftm.guru/icons/lock.svg" alt="Lock Icon">
+            <a href="https://eliteness.network/elocks">eLOCKS</a>
+            ≻ <a>Overview</a>
+        </div> -->
+
+        <div class="topstats">
+            <div class="topstat" onclick="document.getElementsByClassName('tablinks')[2].click();window.location='#Explore'">
+                <div id="topstat-total">$ ---</div>
+                <div>Latest Asset Valuation</div>
+            </div>
+            <div class="topstat">
+                <div id="topstat-date">--- ---, ----</div>
+                <div>Date of Last Report</div>
+            </div>
+            <div class="topstat">
+                <div id="topstat-change">---.--%</div>
+                <div>Growth from Previous</div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Overview')">Historical Overview</button>
+            <button class="tablinks" onclick="openTab(event, 'Reports')">Published Reports</button>
+        </div>
 
 
-<br><br><br><br><br><br><br><br>
-<div align="center">
-	<span id="pfd">💰 <span id="pf">0.000</span></span>
-	<br><br>
-	<i style="font-size:1.25em"><b>N</b>et <b>A</b>sset <b>V</b>aluation in US$ </i><br>
-</div>
-<br><br><br><br>
-<hr class="hr1">
-<br><br><br><br><br><br>
+        <!-- Tab content -->
+        <div id="Overview" class="tabcontent">
+        	<div id="chart1" class="echarts" style="width: 100%;height:100%;min-height: 480px; margin:50px auto">
+        	</div>
+        </div>
 
-<h2>Contents of Report</h2>
-<h2 class="fore" onclick="window.location='#a_birdsee'"> ― Distribution Overview</h2>
-<h2 class="fore" onclick="window.location='#a_gov'"> ― Governance Powers</h2>
-
-<div style="margin-left:42px">
-	<li>Solidly</li>
-	<li>Solidex</li>
-	<li>PanicSwap</li>
-	<li>BeethovenX</li>
-	<li>ProtoFi</li>
-</div>
-<h2 class="fore" onclick="window.location='#a_kompound'"> ― Kompound Protocol</h2>
-
-<br><br><br><br>
-<hr class="hr1">
-<br id="a_birdsee"><br><br><br><br><br>
-<h2>Birds-eye View of Bankroll</h2>
-<span class="fore">Protocol-wise</span> BreakDown of asset allocations
-<br><br><br><br>
-<div style="overflow:auto;text-align:center">
-	<table align="center">
-		<thead>
-			<tr>
-				<td onclick="sortit(0,'mainstage_inv_ftm')">De-Fi Protocol</td>
-				<td onclick="sortit(1,'mainstage_inv_ftm')">Net Worth</td>
-				<td onclick="sortit(2,'mainstage_inv_ftm')">Dominance</td>
-			</tr>
-		</thead>
-		<tbody id="mainstage_inv_ftm">
-			<tr>
-				<td><img src="https://ftm.guru/icons/kucino.svg" style="position:relative;top:4px"> Kompound Protocol</td>
-				<td id="kpv_summ">0.00</td>
-				<td onclick="">0.000000%</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+        <!-- Tab content -->
+        <div id="Reports" class="tabcontent">
+            <div class="c2a">
+				<h2>All Reports by Date</h2>
+				<h3><a target="_blank" href="https://ftm.guru/docs/treasury/2022-11-05/"> 2022-11-05 </h3>
+				<h3><a target="_blank" href="https://ftm.guru/docs/treasury/2023-06-29/"> 2023-06-29 </h3>
+				<h3><a target="_blank" href="https://ftm.guru/docs/treasury/2023-10-09/"> 2023-10-09 </h3>
+				<h3><a target="_blank" href="https://ftm.guru/docs/treasury/2024-05-26/"> 2024-05-26 </h3>
+				<h3><a target="_blank" href="https://ftm.guru/docs/treasury/2024-08-05/"> 2024-08-05 </h3>
+        	</div>
+        </div>
 
 
 
-<br><br><br><br><br><br>
-<hr class="hr1">
-<br id="a_gov"><br><br><br>
-<div class="govdiv" style="font-size:1.25em">
-	<h2> Governance Powers</h2>
-	<span class="fore">Voting Rights</span> of The Guru Network in external Protocols.
-	<br><br><br><br><br><br>
+		<footer>
+        <h2>Powered by Guru Network</h2>
+        <div class="social">
+            <a target="_blank" href="https://discord.gg/QpyfMarNrV"><img src="https://ftm.guru/icons/discord.svg" alt="Discord"></a>
+            <a target="_blank" href="https://twitter.com/FTM1337"><img src="https://ftm.guru/icons/twitter.svg" alt="Twitter"></a>
+            <a target="_blank" href="https://dune.com/eliteness"><img src="https://ftm.guru/icons/dune.svg" alt="Dune"></a>
+            <a target="_blank" href="https://defillama.com/protocol/guru-network-dao"><img src="https://ftm.guru/icons/defillama.svg" alt="Defillama"></a>
+            <a target="_blank" href="https://coinmarketcap.com/currencies/elite-1337"><img src="https://ftm.guru/icons/cmc.svg" alt="CoinMarketCap"></a>
+            <a target="_blank" href="https://ftm.guru/docs"><img src="https://ftm.guru/icons/docs.svg" alt="Docs"></a>
+        </div>
+	</footer>
+    </div>
 
+    <!-- Ignore Below Block : Dev Logs -->
+    <div style="display:none">
+        <span id="cw_m"></span>
+        <div id="connect">
+            Please connect your web3 wallet.
+            <button onclick="cw()" id="btn-connect">Connect</button>
+        </div>
+        <div id="switch">
+            <b id="btn-switch" onclick="cw()">
+                <span id="cw"></span>
+            </b>
+            <div>Balance: <b id="usb-mtv">?</b> USDC</div>
+            <span>Wallet at Fantom Opera. <a href="index.html" style="color:aqua;">Change?</a></span>
+        </div>
+    </div>
+    <!-- Ignore Above Block : Dev Logs -->
 
-	<h3><img src="https://ftm.guru/icons/solidly.svg" style="position:relative;top:6px" height="32px"> Solidly.Exchange</h3>
-	<span class="fore">We own The <b>veNFT #76</b>.</span><br><br>
-	<div class="cards">
-		<div class="card">
-			<br>
-			<span id="gov_solidly_vl"> ? </span>
-			<hr>
-			SOLID Locked
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_solidly_ul"> ? </span>
-			<hr>
-			Unlock Date
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_solidly_pow"> ? </span>
-			<hr>
-			Voting Power
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_solidly_dom"> ? </span>
-			<hr>
-			Global Dominance
-		</div>
-		<!--
-		<div class="card">
-			<br>
-			<span id="gov_solidly_mv"> ? </span>
-			<hr>
-			Market Value (USD)
-		</div>
-		-->
-	</div>
-
-
-	<br><br><br><br>
-	<h3><img src="https://ftm.guru/icons/solidex.svg" style="position:relative;top:6px" height="32px"> SolidexFinance.com</h3>
-	<span class="fore">We own multiple <b>vlSEX</b> locks..</span><br><br>
-	<div class="cards">
-		<div class="card">
-			<br>
-			<span id="gov_solidex_vl"> ? </span>
-			<hr>
-			SEX Locked
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_solidex_ul"> ? </span>
-			<hr>
-			Unlock Date
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_solidex_pow"> ? </span>
-			<hr>
-			Voting Power
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_solidex_dom"> ? </span>
-			<hr>
-			Global Dominance
-		</div>
-		<!--
-		<div class="card">
-			<br>
-			<span id="gov_solidex_mv"> ? </span>
-			<hr>
-			Market Value (USD)
-		</div>
-		-->
-	</div>
-
-
-	<br><br><br><br>
-	<h3><img src="https://ftm.guru/icons/oxd.svg" style="position:relative;top:6px" height="32px"> OxDAO.fi</h3>
-	<span class="fore">We own multiple <b>vlOXD</b> locks.</span><br><br>
-	<div class="cards">
-		<div class="card">
-			<br>
-			<span id="gov_oxdao_vl"> ? </span>
-			<hr>
-			OXD Locked
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_oxdao_ul"> ? </span>
-			<hr>
-			Unlock Date
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_oxdao_pow"> ? </span>
-			<hr>
-			Voting Power
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_oxdao_dom"> ? </span>
-			<hr>
-			Global Dominance
-		</div>
-		<!--
-		<div class="card">
-			<br>
-			<span id="gov_oxdao_mv"> ? </span>
-			<hr>
-			Market Value (USD)
-		</div>
-		-->
-	</div>
-
-
-	<br><br><br><br>
-	<h3><img src="https://ftm.guru/icons/panic.png" style="position:relative;top:6px" height="32px"> PanicSwap.com</h3>
-	<span class="fore">We <b>Lock PANIC</b>.</span><br><br>
-
-	<div class="cards">
-		<div class="card">
-			<br>
-			<span id="gov_panic_vl"> ? </span>
-			<hr>
-			PANIC Locked
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_panic_ul"> ? </span>
-			<hr>
-			Unlock Date
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_panic_pow"> ? </span>
-			<hr>
-			Voting Power
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_panic_dom"> ? </span>
-			<hr>
-			Global Dominance
-		</div>
-		<!--
-		<div class="card">
-			<br>
-			<span id="gov_panic_mv"> ? </span>
-			<hr>
-			Market Value (USD)
-		</div>
-		-->
-	</div>
-
-
-	<br><br><br><br>
-	<h3><img src="https://ftm.guru/icons/beets.png" style="position:relative;top:6px" height="32px"> Beets.fi</h3>
-	<span class="fore">We own <b>fBEETS</b>.</span><br><br>
-
-	<div class="cards">
-		<div class="card">
-			<br>
-			<span id="gov_fbeets_vl"> ? </span>
-			<hr>
-			fBEETS Owned
-		</div>
-		<!--
-		<div class="card">
-			<br>
-			<span id="gov_fbeets_pow"> ? </span>
-			<hr>
-			Voting Power
-		</div>
-		-->
-		<div class="card">
-			<br>
-			<span id="gov_fbeets_dom"> ? </span>
-			<hr>
-			Global Dominance
-		</div>
-		<!--
-		<div class="card">
-			<br>
-			<span id="gov_fbeets_mv"> ? </span>
-			<hr>
-			Market Value (USD)
-		</div>
-		-->
-	</div>
-
-
-	<br><br><br><br>
-	<h4><img src="https://ftm.guru/icons/beluga.png" style="position:relative;top:6px" height="32px"> Beluga.fi</h4>
-	We're yet to acquire Governance Rights at Beluga but will soon have some this fortnight.
-	<!--
-	We <b>Lock PANIC</b> perpetually by extending upto 2 years.
-	<br>PANIC Locked: <b id="gov_panic_vl"></b>
-	<br>Voting Power: <span id="gov_panic_power"></b>
-	<br>Global Dominance: <span id="gov_panic_dominance"></b>
-	-->
-
-
-	<br><br><br><br>
-	<h3><img src="https://ftm.guru/icons/protofi.png" style="position:relative;top:6px" height="32px"> ProtoFi.app</h3>
-	<span class="fore">We lock ELCT into <b>veELCT</b>.</span><br><br>
-
-	<div class="cards">
-		<div class="card">
-			<br>
-			<span id="gov_proto_vl"> ? </span>
-			<hr>
-			ELCT Locked
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_proto_pow"> ? </span>
-			<hr>
-			Voting Power
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_proto_ul"> ? </span>
-			<hr>
-			Unlock Date
-		</div>
-		<div class="card">
-			<br>
-			<span id="gov_proto_dom"> ? </span>
-			<hr>
-			Global Dominance
-		</div>
-		<!--
-		<div class="card">
-			<br>
-			<span id="gov_fbeets_mv"> ? </span>
-			<hr>
-			Market Value (USD)
-		</div>
-		-->
-	</div>
-</div gov>
-
-<br><br><br><br><br><br>
-<hr class="hr1">
-<br id="a_kompound"><br><br><br>
-
-<h2> Kompound Protocol</h2>
-Details of Investments and Collected Revenue from and into Guru Network's own <span class="fore">Kompound Protocol</span>.
-<br><br><br><br>
-<div style="overflow:auto;text-align:center">
-	<table align="center">
-		<thead><tr>
-			<td onclick="sortit(0,'mainstage')">⛓
-			<td onclick="sortit(1,'mainstage')">GRAIN#
-			<td onclick="sortit(2,'mainstage')">Our Position</td>
-			<td onclick="sortit(3,'mainstage')">Buys</td>
-			<td onclick="sortit(4,'mainstage')">Realized APR</td>
-			<td onclick="sortit(5,'mainstage')">Sells</td>
-			<td onclick="sortit(6,'mainstage')">Value Locked</td>
-			<td onclick="sortit(7,'mainstage')">Balance</td>
-			<td onclick="sortit(8,'mainstage')">Uses</td>
-		</tr></thead>
-		<tbody id="mainstage"></tbody>
-	</table>
-</div>
-
-<br><br><br><br><br><br>
-<hr class="hr1">
-<br><br><br><br>
-<div align="center"><i>Want to see more?<br><br>
-<a href="mailto:ftm1337@protonmail.com">📧</a> Let us know!</i><br>
-	<div class="lowerbar">
-	<a target="_blank" href="https://twitter.com/ftm1337"><img src="https://ftm.guru/crypto-icons/twitter.svg"></a>
-	<a target="_blank" href="https://t.me/ftm1337"><img src="https://ftm.guru/crypto-icons/telegram.svg"></a>
-	<a target="_blank" href="https://discord.com/invite/QpyfMarNrV"><img src="https://ftm.guru/crypto-icons/discord.svg"></a>
-	</div>
-</div>
-<br><br><br><br><br><br>
-<div onclick="pantvl()">
-	<span style="font-size:2.5em;font-weight:bold" id="pantvl" class="fore">$0.000</span><sup style="font-size:1.2em;position:relative;top: -14px;">⟳</sup><br>
-	(Total Value Locked on FTM.guru)
-</div>
-
-<br><br>
-<div class="lowerbar">Powered by Guru Network.
-<br>
-	<a target="_blank" href="https://kcc.guru">KCC.guru</a>
-	<a target="_blank" href="https://ftm.guru">FTM.guru</a>
-	<a target="_blank" href="https://fmc.guru">FMC.guru</a>
-	<a target="_blank" href="https://fmc.guru">MTV.guru</a>
-	<br><br>
-	<a target="_blank" href="https://kcc.guru"><img src="https://ftm.guru/crypto-icons/kcc.png"></a>
-	<a target="_blank" href="https://ftm.guru"><img src="https://ftm.guru/crypto-icons/64.png"></a>
-	<a target="_blank" href="https://fmc.guru"><img src="https://ftm.guru/crypto-icons/FMC.svg"></a>
-	<a target="_blank" href="https://mtv.guru"><img src="https://ftm.guru/crypto-icons/mtv.png"></a>
-	<a target="_blank" href="https://medium.com/@ftm1337"><img src="https://ftm.guru/crypto-icons/medium.svg"></a>
-	<a target="_blank" href="https://www.coingecko.com/coins/elite-1337"><img src="https://ftm.guru/crypto-icons/gecko.svg"></a>
-	<a target="_blank" href="https://coinmarketcap.com/currencies/elite-1337"><img src="https://ftm.guru/crypto-icons/cmc.svg"></a>
-	<a target="_blank" href="https://defillama.com/protocol/ftmguru"><img src="https://ftm.guru/crypto-icons/defillama.svg"></a>
-	<a target="_blank" href="https://defillama.com/protocol/ftmguru"><img src="https://ftm.guru/crypto-icons/nomics.svg"></a>
-	<!--<a target="_blank" href="https://defillama.com/protocol/kccguru"><img src="https://ftm.guru/crypto-icons/defillama.svg"></a>-->
-</div>
-
-<br><br><br><br><br><hr class="hr1">
-
-</div>
+    <script src="https://ftm.guru/ethers-5.2.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+    <script src="index.js"></script>
+    <script>
+        RPC_URL = "https://rpc.ankr.com/fantom";
+        CHAINID = 250;
+        CHAIN_NAME = "Fantom Opera";
+        CHAIN_GAS = "FTM";
+        DECIMAL = 18;
+        EXPLORE = "https://ftmscan.com/";
+        EXPLORT = EXPLORE + "tx/";
+        EXPLORA = EXPLORE + "address/";
+        TVLGURU = "0x0786c3a78f5133f08c1c70953b8b10376bc6dcad";
+        NATIVE = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+        NATIVE_NAME = "FTM";
+        NATIVE_LOGO = "https://ftm.guru/icons/ftm.svg";
+        LOCKER_ROOM = "0x2f20A659601d1c161A108E0725FEF31256a907ad";
+        FACTORY = "0xc6366efd0af1d09171fe0ebf32c7943bb310832a";
+        AGENT = "0x167d87a906da361a10061fe42bbe89451c2ee584";
+        PERCENT = 0.01337e18;
+        LOGOS = "https://cdn.jsdelivr.net/gh/unified-defi/equalizer-tokens@latest/fantom/tokens/128x128/";
+        GAUGE_REWARD_0 = "EQUAL";
+    </script>
 </body>
-<script src="../web3.min.js"></script>
-<script>
-window.addEventListener('load',async function()
-{
-	gov_r()
-	fetch("https://openapi.debank.com/v1/user/total_balance?id=0x167d87a906da361a10061fe42bbe89451c2ee584")
-	.then(res=>res.json())
-	.then(rd=>{pfv+=rd.total_usd_value*1e18;$("pf").innerHTML = fornumstd(pfv,18);});
-	//fetch("https://openapi.debank.com/v1/user/complex_protocol_list?id=0x167d87a906da361a10061fe42bbe89451c2ee584")
-	fetch("https://openapi.debank.com/v1/user/simple_protocol_list?id=0x167d87a906da361a10061fe42bbe89451c2ee584")
-	.then(res=>res.json())
-	.then(rd=>{cplx(rd)});
-	_ftm = await new Web3("https://rpc.ftm.tools");
-	_kcc = await new Web3("https://rpc-mainnet.kcc.network");
-	_mtv = await new Web3("https://rpc.mtv.ac");
-	for(i=0;i< grains.ftm.length;i++){ggs(_ftm,grains.ftm[i],"ftm.svg")};
-	for(j=0;j< grains.kcc.length;j++){ggs(_kcc,grains.kcc[j],"kcc.png")};
-	for(k=0;k< grains.mtv.length;k++){ggs(_mtv,grains.mtv[k],"mtv.png")};
-	console.log("PFV for 0x167d87a906da361a10061fe42bbe89451c2ee584")
-	pantvl()
-}, false);
-
-
-function pantvl()
-{
-	pt=new web3.eth.Contract([{"constant": true,"inputs": [],"name": "tvl","outputs": [{"internalType": "uint256","name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"}],"0x0786c3a78f5133F08C1c70953B8B10376bC6dCad")
-	pt.methods.tvl().call((e,r)=>{$("pantvl").innerHTML = "$"+(Number(r)/1e18).toLocaleString()});
-}
-function fornum(n,d)
-{
-	_n=(Number(n)/10**Number(d));
-	n_=_n;
-	if(_n>1e18){n_=(_n/1e18).toFixed(2)+"Qt"}
-	else if(_n>1e15){n_=(_n/1e15).toFixed(2)+"Qd"}
-	else if(_n>1e12){n_=(_n/1e12).toFixed(2)+"Tn"}
-	else if(_n>1e9){n_=(_n/1e9).toFixed(2)+"Bn"}
-	else if(_n>1e6){n_=(_n/1e6).toFixed(2)+"Mn"}
-	else if(_n>1e3){n_=(_n/1e3).toFixed(2)+"Th"}
-	else if(_n>0){n_=(_n/1e0).toFixed(5)+""}
-	return(n_);
-}
-function $(_) {return document.getElementById(_);}
-function cw(){}
-function switchchain(v)
-{
-	if(v=="250"){window.location="https://ftm.guru/GRAIN"}
-	if(v=="321"){window.location="https://kcc.guru/kompound"}
-	if(v=="62621"){window.location="https://mtv.guru"}
-}
-function dive()
-{
-	if($("ddb").parentElement.parentElement.getAttribute("open")==null)
-	{
-		$("ddb").parentElement.parentElement.setAttribute("open","");
-		$("ddb").children[0].innerHTML="Deeper Dive"
-	}
-	else
-	{
-		$("ddb").parentElement.parentElement.removeAttribute("open")
-		$("ddb").children[0].innerHTML="Dive Deeper"
-	}
-}
-function togcar()
-{
-	ac2 = document.getElementsByClassName("cardhide");
-	for(i=0;i< ac2.length;i++)
-	{
-		ac2[i].style.display=ac2[i].style.display==""?"none":""
-	}
-}
-grains=
-{
-	//ID#						ADDRESS								BUYS				SELLS			USES								ACTIVE
-
-"ftm":	[
-
-
-	["2201",	"0x50e66D1232f272B481F349F01b5C6019896A23e3",	["ftm.svg","usdc.svg"],	["knight.svg"], ["knight.svg"],						true],
-	["2301",	"0xd15d6434aC56007BA85ce89377481964eBDf532a",	["ftm.svg","usdc.svg"],	["wraith.svg"], ["wraith.svg"],						true],
-	["2303",	"0xFe80Ecb1B879f24B08E3Caa74246D4Ae17fbA53B",	["syf.svg","ftm.svg"],	["wraith.svg"], ["wraith.svg"],						true],
-	//["2401",	"0x50e66D1232f272B481F349F01b5C6019896A23e3",	["ftm.svg","fusd.svg"],	["knight.svg"], ["knight.svg"],						true],
-	["2501",	"0xE2c82fd8EE829B7309122d1ae63468D0fC323F45",	["spooky.sq.svg"],		["ftm.svg"], 	["xboo.png"],						false],
-	["2502",	"0xf29C310D60e87bf54DC973DF73D64a339bb944Cb",	["spooky.sq.svg"],		["tusd.svg"], 	["xboo.png"],						true],
-	["2503",	"0xBc68f64879b26cf34be397fB8b8f0209FEaBbF91",	["spooky.sq.svg"],		["foo.png"], 	["xboo.png"],						false],
-	["2504",	"0x80aE633a3B909F31BD1beF990b6C642Ca639c7eC",	["spooky.sq.svg"],		["woo.png"], 	["xboo.png"],						true],
-	["2505",	"0x390505AA41aC3BdF31b36ab72EbBA36CFe6C8c6B",	["spooky.sq.svg"],		["treeb.png"], 	["xboo.png"],						false],
-	["2506",	"0x2Dcc87751ffF3E250a4dd0037991653472bFfA64",	["spooky.sq.svg"],		["font.png"], 	["xboo.png"],						true],
-	["2507",	"0xc340b2A90A3BDc0Ad2086E3256A7E9026D03C448",	["spooky.sq.svg"],		["lqdr.png"], 	["xboo.png"],						true],
-	["2508",	"0xff383254B2070FD335f51c0CA81a10764a713f64",	["spooky.sq.svg"],		["ooe.png"], 	["xboo.png"],						true],
-	["2509",	"0xE3A6400c6505BCe5B14C47dE4A9f967C638802dd",	["spooky.sq.svg"],		["hnd.png"], 	["xboo.png"],						false],
-	["2510",	"0xc52a37D46a8a4B10355068f34dE71d5fE791f245",	["spooky.sq.svg"],		["brush.png"], 	["xboo.png"],						false],
-	["2512",	"0xd75034233f33e6f6a7660ff3362416783b95bf44",	["spooky.sq.svg"],		["ring.svg"], 	["xboo.png"],						true],
-	["2601",	"0x6eC2Cb84422403e06935ac55910Fa3609F55BCce",	["ftm.svg","mim.svg"],	["shrap.png"], ["bomb.svg"],						true],
-	["2602",	"0x00bedBdD440ff2eFEC3A6a42230e8D3Bfac63d63",	["bomb.svg","ftm.svg"],	["shrap.png"], ["bomb.svg"],						true],
-	["2603",	"0x977541676bA8eF35e8116566Bca29FD6C72BA159",	["shrap.png","ftm.svg"],["shrap.png"], ["bomb.svg"],						true],
-	["2606",	"0x7266dd2fe1D6447E57924BD41450a613a779Da3f",	["shrap.png","bomb.svg"],["shrap.png"], ["bomb.svg"],						true],
-	["2607",	"0xC7d89a0aA32eb496222f88fA1193566C761b7681",	["sst.png","ftm.svg"],	["shrap.png"], ["bomb.svg"],						true],
-	["2608",	"0xD42C91A330425858BFD78e291365E1b41f56a2Ff",	["ftm.svg","usdc.svg"],	["shrap.png"], ["bomb.svg"],						true],
-	["2609",	"0x15FcCE81d8f5B4847e0F65243BFDA85972c98474",	["ftm.svg","btc.svg"],	["shrap.png"], ["bomb.svg"],						true],
-	["2610",	"0x2b5005f9F08f8A899c7186BD90071da4a131dD46",	["ftm.svg","eth.svg"],	["shrap.png"], ["bomb.svg"],						true],
-	["2611",	"0x329AAcBe71666692354272384e38Cb03Df69a71b",	["shrap.png","kek.png"],["shrap.png"], ["bomb.svg"],						true],
-	//["2612",	"0xE03a39e693695e4405214525FdFB00A51CF454AC",	["shrap.pnp","wmemo.png"],["shrap.png"], ["bomb.svg"],						true],
-	["2613",	"0x576Be556eeA4F6eD4E6EF248c163BA58340c3091",	["shrap.png","sspell.png"],	["shrap.png"], ["bomb.svg"],					true],
-	["2614",	"0xC95786f122926400da2A261eE5a8424019e7D416",	["shrap.png","slurp.png"],	["shrap.png"], ["bomb.svg"],					true],
-	["2615",	"0x462740150DDAb5816f6007ed179C8013fB7f1e17",	["shrap.png","nice.svg"],	["shrap.png"], ["bomb.svg"],					true],
-	["2616",	"0x4FfD42099576Bda1F3aC508E6192E4BD89125bed",	["shrap.png","coffin.png"],	["shrap.png"], ["bomb.svg"],					true],
-	["2617",	"0x0E02D360784234716a8BDeE721018ae699C1F524",	["shrap.png","smart.svg"],	["shrap.png"], ["bomb.svg"],					true],
-	["2701",	"0x5E62e97A73258947e1745071Ba342C6169A25E80",	["ftm.svg","usdc.svg"],	["dmd.svg"],	["dmd.svg"],						true],
-	["2901",	"0xfD5d0aB5404dd472975922501f670d194732577B",	["64.png","ftm.svg"],	["nips.svg"], ["nips.svg"],							true],
-	["4101",	"0xD7627edF607C49F525212fC09d650A91a9B222e1",	["ftm.svg"],			["vedao.png"],	["vedao.png"],						false],
-	["4102",	"0x1b70E038f9eC9A8f979B4e6D8CD0Dc85df677CB2",	["eth.svg"],			["vedao.png"],	["vedao.png"],						false],
-	["4103",	"0x48B628AC7F6Fa84298c6b3198130C2068073AB01",	["yfi.svg"],			["vedao.png"],	["vedao.png"],						false],
-	["4104",	"0xd072046b0928b9Eb6B2Afa9D80cbDFE759Ef3A8B",	["usdc.svg"],			["vedao.png"],	["vedao.png"],						false],
-	["4105",	"0x69B83634B6E7C2bfFAb8B1ae3B8498d2dab6D51f",	["mim.svg"],			["vedao.png"],	["vedao.png"],						false],
-	["4106",	"0x2938F27687Ae2ad54db2B91B4B836B6ADD15AC8f",	["frax.svg"],			["vedao.png"],	["vedao.png"],						false],
-	["4107",	"0xe125C9c6560c17f4dF8774dB6B9e5d2b3BF9947f",	["usdc.svg","vedao.png"],["vedao.png"],	["vedao.png"],						false],
-	["4108",	"0xE880A7F6C9C326477A7D98e736E1524A7F8D4394",	["usdc.svg","vedao.png"],["vedao.png"],	["vedao.png"],						false],
-	["4201",	"0xA2B1f90A6CF0FD5451E0fE7ED67331EC15Bd1aAB",	["ftm.svg"],			["oxd.svg"],	["oxd.svg"],						false],
-	["4202",	"0x27881D9Ee5F4769AdE8762E93c503D3a7C59769e",	["eth.svg"],			["oxd.svg"],	["oxd.svg"],						false],
-	["4203",	"0xC255FCEFf6967B30E1A467FA4e97560ae5fE54bA",	["btc.svg"],			["oxd.svg"],	["oxd.svg"],						false],
-	["4204",	"0x27DaBA6E82A23C5f9C264257b417D3b99435469d",	["usdc.svg"],			["oxd.svg"],	["oxd.svg"],						false],
-	["4205",	"0x8885dAa97a0A6590740B6139FD81613D5A543C20",	["dai.svg"],			["oxd.svg"],	["oxd.svg"],						false],
-	["4206",	"0xa638Fe74968c9B95E2E3868f9487390087Ef80aC",	["mim.svg"],			["oxd.svg"],	["oxd.svg"],						false],
-	["4209",	"0x2E24ABF15ECdA2D58E9840456D397CfbA30c9895",	["lqdr.png"],			["oxd.svg"],	["oxd.svg"],						false],
-	["4212",	"0x4b7bfaF14a961D0033a2f65d07523b8321D7e477",	["tomb.png"],			["oxd.svg"],	["oxd.svg"],						false],
-	["4301",	"0xD41835b49e90A6438C363e4A3613F4A0E5656c55",	["defy.png","usdc.svg"],["defy.png"], 	["defy.png"],						true],
-	["4302",	"0xe46DE1EbD9760975841B7B3Af0DF8612b7566B58",	["defy.png","ftm.svg"],	["defy.png"],	 ["defy.png"],						true],
-	["4303",	"0x6812e3b614f3dE965821aa1f7A8CA1714cB09a66",	["defy.png","slurp.png"],["defy.png"],	 ["defy.png"],						true],
-	["4401",	"0x565468cFeDE97E7E936B7B0deD53A5DC60623709",	["elk.svg","ftm.svg"],	["elk.svg"], ["elk.svg"],							true],
-	["4402",	"0xb781e75605d0F74cfBd65E8BF48a9FF57E5bDe78",	["elk.svg","usdc.svg"],	["elk.svg"], ["elk.svg"],							true],
-	["4501",	"0xAFEE7A332989261893b11544A2b4622d77Dc8404",	["dai.svg","mai.svg"],	["protofi.png"], ["protofi.png"],					true],
-	["4601",	"0x812C8e4744f40Ce5a01849154308509Abdb7c975",	["dai.svg","usdc.svg"],	["wigo.svg"], ["wigo.svg"],							true],
-	["4701",	"0x535f3d46Aa9D4334f8bA5493E688b568F2F20589",	["ring.svg","usdc.svg"],["spooky.sq.svg"], ["spooky.sq.svg"],				true],
-	["4801",	"0xEfAE80d23f623f5Adbb1324110b8105DbBd8f82c",	["ring.svg","usdc.svg"],["beets.png","ring.svg"], ["beets.png"],			true],
-	["4802",	"0xaE51E9697F72937b8E4D25f87123f1ccF0C217CF",	["shrap.png","ftm.svg"],["beets.png"], ["beets.png"],						true],
-	["5201",	"0x9997408b7735DB87747A055a51ea39607591885f",	["64.png","usdc.svg"],	["solidly.svg","sex.png"], ["solidex.svg"],			true],
-	["5202",	"0x50855F85c0A1B6a35aDC1700A74eF98B3243B5D5",	["64.png","ftm.svg"],	["solidly.svg","sex.png"], ["solidex.svg"],			true],
-	["5221",	"0xc4b0986c7003caf7d78645c5d49629caeb479d80",	["panic.png","ftm.svg"],	["solidly.svg","sex.png"], ["solidex.svg"],		true],
-],
-
-"kcc" :
-[
-	["3101",	"0xddca793284b546cce25e03af53c2ac0f949a8b8d",	["bnb.svg","kcs.svg"],	["kud.png"],	["kudex.png"]],
-	["3102",	"0xf5be9634549fead60f7dce272fe9a4b96c3b1926",	["kcs.svg","usdt.svg"],	["kud.png"],	["kudex.png"]],
-	["3103",	"0x727A82566ff09AC80ce9D33651197dDCDaFd5a3D",	["kcs.svg","usdc.svg"],	["kud.png"],	["kudex.png"]],
-	["3201",	"0x5Bb3895D4faC7Ce3AfBb163A9e0a9364aa7AA07d",	["kcs.svg","usdt.svg"],	["kus.png"],	["kuswap.svg"]],
-	["3202",	"0x974822c6fd06709709fbf880d29352EF19A7CF88",	["kcs.svg","usdc.svg"],	["kus.png"],	["kuswap.svg"]],
-	["3203",	"0x2A5C9F52b0211Ed72f776a3692de192Cef8B160F",	["kcs.svg","dai.svg"],	["kus.png"],	["kuswap.svg"]],
-	["3204",	"0x03010C2C9E5eC5779fF744e79A86921d58486085",	["kcs.svg","btc.svg"],	["kus.png"],	["kuswap.svg"]],
-	["3301",	"0x3b143382d267bd0652d67c9f43d48c73476a28f8",	["elk.svg","kcs.svg"],	["elk.svg"],	["elk.svg"]],
-	["3302",	"0x6AeBfc883bb404D32441DD103a8dA7b979901594",	["elk.svg","usdc.svg"],	["elk.svg"],	["elk.svg"]],
-],
-
-"mtv" :
-[
-	["6101",	"0xc295f619afc2b8543d91c8970ea4c0726f197250",	["moon.png","mtv.png"],	["moon.png"],	["moonswap.png"]],		//	mtv-moon
-	["6102",	"0x9d9682577CA889c882412056669bd936894663fd",	["mtv.png","busd.svg"],	["moon.png"],	["moonswap.png"]],		//	mtv-busd
-	["6103",	"0x2696f94f11dfF0d77875E2652FCdB537274B9CE7",	["moon.png","busd.svg"],["moon.png"],	["moonswap.png"]],		//	moon-busd
-	["6201",	"0xec8fc44425a1F6c4d41F590E47472a4F0Ee26D55",	["htz.png","mtv.png"],	["htz.png"],	["htz.png"]],			//	htz-mtv
-	["6202",	"0x861fE22B721602954d34f2E4a5843e6a295811c7",	["htz.png","usdc.svg"],	["htz.png"],	["htz.png"]],			//	htz-usdc
-]
-
-};
-pfv=0;kpv=0;
-async function ggs(w3,g,ct)
-{
-	let web3 = w3;
-	G = new web3.eth.Contract(grabi,g[1]);
-	//let info = G.methods.info().call()
-	url=web3.currentProvider.host;
-	data={"jsonrpc":"2.0","id":9,"method":"eth_call","params":[{"data":"0x370158ea","to":g[1]},"latest"]}
-	let info = fetch(url, { method: 'POST', body: JSON.stringify(data), headers: { 'Content-Type': 'application/json'} }).then(r=>r.json()).then(r=>r.result);
-	let gtvl = G.methods.tvl().call()
-	let tsup = G.methods.totalSupply().call()
-	let gugb = 0;
-	let sit = 3;
-	gugb = await G.methods.balanceOf("0x167d87a906da361a10061fe42bbe89451c2ee584").call();
-	addCSS("td:nth-child(2){display:revert}");
-	sit = 2
-	Promise.all([info,gtvl,tsup,gugb])
-	.then(gd=>{
-		gtr = document.createElement("tr");
-		if(gd[1]==0){gd[1]=1}
-		if(gd[2]==0){gd[2]=1}
-		oi=[];
-		if(gd[0]==undefined){oi=[1,1,1]}
-		else{for(i=0;i< (gd[0].length-2)/64;i++){oi.push(Number("0x"+gd[0].substr(2+64*i,64)))}}
-		gtr.innerHTML = `
-			<td><img src="https://ftm.guru/icons/${ct}"></td>
-			<td><a href="https://ftm.guru/GRAIN/${g[0]}.html" target="_blank">🌾#${g[0]}</a></td>
-			<td>$${((Number(gd[3])/Number(gd[2]))*Number(gd[1])/1e18)}</td>
-			<td>${giu(g[2])}</td>
-			<td>${(oi[2]/1e18).toFixed(1)}%</td>
-			<td>${giu(g[3])}</td>
-			<td>$${(Number(gd[1])/1e18).toLocaleString(undefined,{minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-			<td>${fornumstd(Number(gd[3]),18)}🌾</td>
-			<td>${giu(g[4])}</td>
-		`;
-		pfv += ((Number(gd[3])/Number(gd[2]))*Number(gd[1]));
-		$("pf").innerHTML = fornumstd(pfv,18);
-		kpv += ((Number(gd[3])/Number(gd[2]))*Number(gd[1]));
-		$("kpv_summ").innerHTML = fornumstd(kpv,18);
-		$("mainstage").append(gtr);
-		sortit(sit,'mainstage');sortit(sit,'mainstage');
-		sortit(1,'mainstage_inv_ftm');sortit(1,'mainstage_inv_ftm')
-	})
-
-}
-function cplx(rdd)
-{
-	for(l=0;l< rdd.length;l++)
-	{
-		gtrdd = document.createElement("tr");
-		gtrdd.innerHTML = `
-			<td><img src="${rdd[l].logo_url}" style="position:relative;top:6px"> ${rdd[l].name}</td>
-			<td>${(rdd[l].net_usd_value).toLocaleString(undefined,{minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-			<td>${rdd[l].tvl==0?"?":(rdd[l].net_usd_value/rdd[l].tvl*100).toFixed(6)}%</td>
-		`;
-		$("mainstage_inv_ftm").append(gtrdd)
-	}
-	sortit(1,'mainstage_inv_ftm');sortit(1,'mainstage_inv_ftm');
-}
-function giu(ari)
-{
-	rst = ""
-	//console.log("ari is", ari)
-	for(i=0;i< ari.length;i++)
-	{rst+= (`<img src="https://ftm.guru/icons/${ari[i]}">`)}
-	return rst
-}
-function fornumstd(n,d){return Number((Number(n)/10**d).toFixed(2)).toLocaleString()}
-grabi=[{"inputs":[{"internalType":"address","name":"_w","type":"address"},{"internalType":"address","name":"_m","type":"address"},{"internalType":"address","name":"_e","type":"address"},{"internalType":"uint8","name":"_p","type":"uint8"},{"internalType":"address","name":"_R","type":"address"},{"internalType":"address[]","name":"_rA","type":"address[]"},{"internalType":"address[]","name":"_rB","type":"address[]"},{"internalType":"string","name":"_id","type":"string"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"src","type":"address"},{"indexed":true,"internalType":"address","name":"guy","type":"address"},{"indexed":false,"internalType":"uint256","name":"wad","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Compounded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Staked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"src","type":"address"},{"indexed":true,"internalType":"address","name":"dst","type":"address"},{"indexed":false,"internalType":"uint256","name":"wad","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Withdrawn","type":"event"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"Eliteness","outputs":[{"internalType":"address","name":"ELITE","type":"address"},{"internalType":"uint256","name":"ELITES","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"allnums","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"guy","type":"address"},{"internalType":"uint256","name":"wad","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"guy","type":"address"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_mw","type":"uint256"},{"internalType":"uint256","name":"_wi","type":"uint256"},{"internalType":"uint256","name":"_pf","type":"uint256"},{"internalType":"address","name":"_t","type":"address"},{"internalType":"uint256","name":"_df","type":"uint256"}],"name":"config","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"dao","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"declareEmergency","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"}],"name":"deposit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"doHardWork","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"earn","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"u","type":"address"}],"name":"eliteness","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"emergency","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"}],"name":"emergencyWithdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"id","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"info","outputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"mc","outputs":[{"internalType":"contract IMasterchef","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"n","type":"uint256"}],"name":"pullElite","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"elite","type":"address"},{"internalType":"uint256","name":"elites","type":"uint256"}],"name":"pushElite","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"uint256","name":"tokens","type":"uint256"}],"name":"rescue","outputs":[{"internalType":"bool","name":"success","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"revokeEmergency","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"routeA","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"routeB","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"router","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"salvage","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"dst","type":"address"},{"internalType":"uint256","name":"wad","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"src","type":"address"},{"internalType":"address","name":"dst","type":"address"},{"internalType":"uint256","name":"wad","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"treasury","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"tvl","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"utvl","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"want","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"}],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"}]
-function sortit(n,id) {
-  var t, r, z, i, x, y, v, b, c = 0;
-  t = document.getElementById(id);
-  z = true;
-  b = "a";
-  while (z) {
-    z = false;
-    r = t.rows;
-    for (i = 0; i < (r.length - 1); i++) {
-      v = false;
-      x = (r[i].getElementsByTagName("TD")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
-      if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
-      y = (r[i + 1].getElementsByTagName("TD")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
-      if(isFinite(y)){y=Number(y)}else{y=y.toLowerCase()}
-      if (b == "a") {
-        if ((x) > (y)) {
-          v= true;
-          break;
-        }
-      } else if (b == "d") {
-        if ((x) < (y)) {
-          v = true;
-          break;
-        }
-      }
-    }
-    if (v) {
-      r[i].parentNode.insertBefore(r[i + 1], r[i]);
-      z = true;
-      c ++;
-    } else {
-      if (c == 0 && b == "a") {
-        b = "d";
-        z = true;
-      }
-    }
-  }
-}
-const addCSS = s => document.head.appendChild(document.createElement("style")).innerHTML=s;
-
-/*
-async function cw()
-{
-	if(!(window.ethereum)){console.log("Metamask not detected!");return(0)}
-	if(!(Number(window.ethereum.chainId)==250)){console.log("Wrong network detected!");return(0)}
-	await window.ethereum.enable();
-	$("btn-connect").innerHTML= (window.ethereum.selectedAddress).substr(0,10) +"..."+(window.ethereum.selectedAddress).substr(34);
-	$("btn-connect").style.display="none";
-	var sheet = document.createElement('style');
-	$("btn-connect").style.display="none";
-	addCSS("td:nth-child(2){display:revert}");
-	console.log("found user:",(window.ethereum.selectedAddress), "printing portfolio")
-	$("mainstage").innerHTML = ""
-	for(i=0;i< grains.length;i++){ggs(grains[i])}
-}
-*/
-
-
-function gov_r()
-{
-	w3ftm = new Web3("https://rpc.ftm.tools")
-
-	venft = new w3ftm.eth.Contract([{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"locked","outputs":[{"internalType":"int128","name":"amount","type":"int128"},{"internalType":"uint256","name":"end","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"balanceOfNFT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}],"0xcbd8fea77c2452255f59743f55a3ea9d83b3c72b");
-	solid_locked = venft.methods.locked(76).call()
-	solid_power = venft.methods.balanceOfNFT(76).call()
-	solid_global_power = venft.methods.totalSupply().call()
-	Promise.all([solid_locked,solid_power,solid_global_power])
-	.then(solid => {console.log("solid",solid)
-		$("gov_solidly_vl").innerHTML = (Number(solid[0].amount)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		$("gov_solidly_ul").innerHTML = (new Date(Number(solid[0].end)*1e3)).toDateString()
-		$("gov_solidly_pow").innerHTML = (Number(solid[1])/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		$("gov_solidly_dom").innerHTML = (Number(solid[1]) / Number(solid[2]) *100).toLocaleString(undefined,{minimumFractionDigits: 8, maximumFractionDigits: 8})+" %"
-	})
-
-	vlsex = new w3ftm.eth.Contract([{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"userBalance","outputs":[{"internalType":"uint256","name":"balance","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getActiveUserLocks","outputs":[{"internalType":"uint256[2][]","name":"lockData","type":"uint256[2][]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"userWeight","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalWeight","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}],"0xdcc208496b8fcc8e99741df8c6b8856f1ba1c71f")
-	//solidex_locked = vlsex.methods.userBalance("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
-	solidex_locked = vlsex.methods.getActiveUserLocks("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
-	solidex_power = vlsex.methods.userWeight("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
-	solidex_global_power = vlsex.methods.totalWeight().call()
-	Promise.all([solidex_locked,solidex_power,solidex_global_power])
-	.then(solidex => {console.log("solidex",solidex)
-		totsex = 0; maxtl = 0;
-		for(i=0;i< solidex[0].length;i++)
-		{
-			if(Number(solidex[0][i][0])>maxtl){maxtl=Number(solidex[0][i][0]);}
-			totsex+=Number(solidex[0][i][1])
-		}
-		$("gov_solidex_vl").innerHTML = (Number(totsex)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		$("gov_solidex_ul").innerHTML = (new Date(Date.now()+86400000*7*maxtl)).toDateString()
-		$("gov_solidex_pow").innerHTML = (Number(solidex[1])/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		$("gov_solidex_dom").innerHTML = (Number(solidex[1]) / Number(solidex[2]) *100).toLocaleString(undefined,{minimumFractionDigits: 8, maximumFractionDigits: 8})+" %"
-	})
-
-	vlpanic = new w3ftm.eth.Contract([{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"lockedBalances","outputs":[{"internalType":"uint256","name":"total","type":"uint256"},{"internalType":"uint256","name":"unlockable","type":"uint256"},{"internalType":"uint256","name":"locked","type":"uint256"},{"components":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint256","name":"unlockTime","type":"uint256"}],"internalType":"struct MultiFeeDistribution.LockedBalance[]","name":"lockData","type":"tuple[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lockedSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}],"0x536b88cc4aa42450aab021738bf22d63ddc7303e")
-	panic_locked = vlpanic.methods.lockedBalances("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
-	panic_global_power = vlpanic.methods.lockedSupply().call()
-	Promise.all([panic_locked,panic_global_power])
-	.then(panic => {console.log("panic",panic)
-		totpanic = 0; maxtl = 0;
-		for(i=0;i< panic[0].lockData.length;i++)
-		{
-			if(Number(panic[0].lockData[i].unlockTime)>maxtl){maxtl=Number(panic[0].lockData[i].unlockTime);}
-			totpanic+=Number(panic[0].lockData[i].amount)
-		}
-		$("gov_panic_vl").innerHTML = (Number(panic[0].total)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		//$("gov_panic_vl").innerHTML = (Number(totpanic)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		$("gov_panic_ul").innerHTML = (new Date(maxtl*1e3)).toDateString()
-		$("gov_panic_pow").innerHTML = (Number(panic[0].locked)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		$("gov_panic_dom").innerHTML = (Number(panic[0].locked) / Number(panic[1]) *100).toLocaleString(undefined,{minimumFractionDigits: 8, maximumFractionDigits: 8})+" %"
-	})
-
-	fbeets = new w3ftm.eth.Contract([{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}],"0xfcef8a994209d6916eb2c86cdd2afd60aa6f54b1")
-	fbeets_locked = fbeets.methods.balanceOf("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
-	fbeets_global_power = fbeets.methods.totalSupply().call()
-	Promise.all([fbeets_locked,fbeets_global_power])
-	.then(fbeets => {console.log("fbeets",fbeets)
-		$("gov_fbeets_vl").innerHTML = (Number(fbeets[0])/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		//$("gov_fbeets_ul").innerHTML = (new Date(maxtl)).toDateString()
-		//$("gov_fbeets_pow").innerHTML = (Number(fbeets[0].locked)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		$("gov_fbeets_dom").innerHTML = (Number(fbeets[0]) / Number(fbeets[1]) *100).toLocaleString(undefined,{minimumFractionDigits: 8, maximumFractionDigits: 8})+" %"
-	})
-
-	veELCT = new w3ftm.eth.Contract([{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"locked__end","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"name":"locked","outputs":[{"type":"uint256","name":"amountPROTO"},{"type":"uint256","name":"amountELCT"},{"type":"int128","name":"amount"},{"type":"uint256","name":"end"}],"inputs":[{"type":"address","name":"arg0"}],"stateMutability":"view","type":"function","gas":5434}],"0x95d15dc470a27a33a39d2f6e952146348df2b347")
-	proto_locked = veELCT.methods.locked("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
-	proto_power = veELCT.methods.balanceOf("0x167d87a906da361a10061fe42bbe89451c2ee584").call()
-	proto_global_power = veELCT.methods.totalSupply().call()
-	Promise.all([proto_locked,proto_power,proto_global_power])
-	.then(proto => {console.log("proto",proto)
-		$("gov_proto_vl").innerHTML = (Number(proto[0].amountELCT)/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		$("gov_proto_ul").innerHTML = (new Date(Number(proto[0].end)*1e3)).toDateString()
-		$("gov_proto_pow").innerHTML = (Number(proto[1])/1e18).toLocaleString(undefined,{minimumFractionDigits: 4, maximumFractionDigits: 4})
-		$("gov_proto_dom").innerHTML = (Number(proto[1]) / Number(proto[2]) *100).toLocaleString(undefined,{minimumFractionDigits: 8, maximumFractionDigits: 8})+" %"
-	})
-
-
-}
-</script>
 </html>

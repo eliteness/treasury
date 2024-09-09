@@ -1,0 +1,728 @@
+<!doctype html>
+<html>
+<meta charset="UTF-8">
+<head>
+<meta name="description" content="Guru Network's Multi-Chain Treasury">
+<meta name="keywords" content="Multi-Chain, Treasury, Granary, Finance, Compound, Vault, Interest, Decentralized Finance, defi, yield farming, Guru Network, Fantom Opera, FTM">
+<title>Guru Network's Treasury - FTM.guru</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://ftm.guru/img/64.png"/>
+<style>
+@font-face{font-family:bold;src: url(https://ftm.guru/font/bold.ttf);}
+@font-face{ font-family:italic;src: url(https://ftm.guru/font/italic.ttf);}
+@font-face{ font-family:light;src: url(https://ftm.guru/font/light.ttf);}
+@font-face{ font-family:light_italic;src: url(https://ftm.guru/font/light_italic.ttf);}
+@font-face{ font-family:regular;src: url(https://ftm.guru/font/regular.ttf);}
+@font-face{ font-family:regular_italic;src: url(https://ftm.guru/font/regular_italic.ttf);}
+*{font-family:regular;}
+*{
+scroll-behavior: smooth !important;
+}
+body {
+  background: #090909;
+  background-image: url("https://ftm.guru/icons/bg_1.jpg");
+  color: white;
+  background-attachment: fixed;
+  margin:auto;
+  background-size: cover;
+}
+.body{
+  margin: 8%
+}
+.topbar {
+  background: #001337;
+  width: calc(100%-10px);
+  display:flex;
+  flex-wrap: wrap;
+  position:sticky;
+  top:0;
+  z-index: 1;
+  border-bottom: 8px ridge #17082f
+}
+.topbar a, details a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  font-weight: bolder;
+  margin: auto
+}
+.topbar a:first-child{font-size: 2em}
+h1{font-size: 3em}
+h2{}
+h1,h2,h3{color:#32fbe2;}
+
+.lowerbar{
+  font-size: 1.25em;
+  font-weight: bolder;
+}
+.lowerbar a{
+  font-size: 0.75em;
+  font-weight: lighter;
+  padding: 10px 10px 10px 0px;
+  color:#32fbe2;
+  text-decoration: none
+}
+.lowerbar img{width:24px}
+.lowerbar .subimg{width:16px;height:16px;position: relative;right:9px;top:4px;margin-right:-11px}
+.hr1{
+  color: transparent;
+  border-top: 16px dotted #ea39b8;
+  max-width: 50%
+}
+.fore{color: gold !important;font-weight:400;font-size:1.337em}
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+}
+.card{
+  margin:10px 20px 10px 0px;
+  min-width: 220px;
+  padding: 0px 10px 10px 10px;
+  border: 2px solid #1f5;
+  border-radius: 5px;
+  background:rgba(16,240,80,0.2)
+}
+.card hr{color: #1f5;border:dashed 1px }
+.card sub{font-size: 1em}
+.card sup{font-size: 1.5em}
+.card:hover{
+  transform: translate(5px,-5px);
+  box-shadow: -5px 5px 5px rgba(16,240,80,0.75);
+  transition: 0.25s;
+  background: rgba(16,240,80,0.1);
+}
+.card span{font-size: 2em}
+.card a{text-decoration: none;color: inherit}
+.ki img {
+  position: relative;
+  right:0;
+  left: 8px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 0 2px 2px rgba(16,240,80,1);
+}
+.cardapr span:first-child{font-size: 1em}
+.ki img:first-child{left: 16px}
+.ki{text-align: right}
+.fn{
+  max-height: 28px;
+  position: relative;
+  top: -5px;
+  font-size:1em;
+}
+.fn img {
+  position: relative;
+  top:10px;
+  margin-right: 8px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  box-shadow: 0 0 2px 2px rgba(16,180,240,0.5);
+}
+.fn img:nth-child(2) {margin: 0 -10px}
+.ib {
+  position: relative;
+  top:-24px !important;
+  left:8px !important;
+  width: 22px !important;
+  height:22px !important;
+}
+.iib {
+  position: relative;
+  top:-6px !important;
+  left:-12px !important;
+  width: 22px !important;
+  height:22px !important;
+}
+.cardapr{display:grid;grid-template-columns:auto auto;font-weight: bolder;font-size:1.2em}
+.bigapr{font-size: 1em;font-weight:bolder}
+strike{color: pink;font-style: italic;font-weight: lighter;font-size:1.2em}
+ul{font-size:1.1em}
+ul i{font-size:0.85em;}
+/*some*/
+.ddb {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: aqua;
+  border: none;
+  color: #000;
+  text-align: center;
+  font-size: 1.25em;
+  padding: 10px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.ddb span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.ddb span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.ddb:hover span {
+  padding-right: 25px;
+}
+
+.ddb:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.card2{background: #222;color: grey;border:2px solid gray;cursor:not-allowed !important;}
+.cardhide{display:none}
+.card2:hover{transform: none;box-shadow: none}
+.summore{margin: 5px 5% -5px;font-size:0.7em;color: aqua;font-style:italic;display:none}
+.summnum,.summtvl{font-size: 1.1em;color: white;font-weight: bold}
+summary.fore:hover{cursor: cell}
+.sum1num{color: white;font-weight: /*bold*/}
+
+td{font-family:mono;text-align:right;padding:4px 16px;min-width:max-content;min-width: -moz-max-content;font-size:1.25em;}
+td a{color: #fff;text-decoration:underline dotted #1ea;cursor: zoom-in}
+#pfd{font-size: 2.5em;font-weight: bold;}
+thead tr td{font-weight: bold;font-size: 1.2em;text-align: center;text-decoration:underline dotted gold;cursor: alias}
+.toggs{margin: 1%}
+details{font-size: 0.7em}
+td img{height:32px;width: 32px}
+td:first-child, thead tr td{font-family:inherit !important}
+td:nth-last-child(2){display:none}
+td:nth-child(4),td:nth-child(6),td:nth-child(9){text-align: center}
+.topchains img{width:32px;padding:0 4px}
+.topchains:not(.selchain) img{-webkit-filter: grayscale(100%);filter: grayscale(100%);}
+.topchains:hover img{-webkit-filter:none;filter:none;}
+.selchain img{width: 64px}
+#mainstage_inv_ftm td:first-child{text-align: left;font-weight:bold}
+#mainstage_inv_ftm td img{border-radius: 600px}
+.govdiv .cards .card span{font-size: 1.25em;font-weight:bold}
+@media(min-width:641px){
+  details{font-size: 1rem}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+	<a href="">💰Treasury</a>
+	<a href="https://ftm.guru">FTM.guru</a>
+	<a href="https://kcc.guru">FTM.guru</a>
+	<a href="https://mtv.guru">FTM.guru</a>
+	<!--
+	<a href="">FMC.guru</a>
+	<a href="">Others</a>
+	<a href="">Kompound</a>
+	<a href="">T</a>
+	<a href="">T</a>
+	<a href="">D</a>
+	-->
+</div>
+<div class="body">
+<h1>Multi-Chain Treasury</h1>
+<h3 class="fore">Details about Guru Network's Assets</h3>
+<i>Learn more about the Resources and Powers of the Guru Network.</i>
+
+
+<br><br><br><br><br><br><br><br>
+<div align="center">
+	<span id="pfd">💰 <span id="pf">0.000</span></span>
+	<br><br>
+	<i style="font-size:1.25em"><b>N</b>et <b>A</b>sset <b>V</b>aluation in US$ </i><br>
+</div>
+<br><br><br><br>
+<hr class="hr1">
+<br><br><br><br><br><br>
+
+<h2>Contents of Report</h2>
+<h2 class="fore" onclick="window.location='#a_birdsee'"> ― Distribution Overview</h2>
+<h2 class="fore" onclick="window.location='#a_gov'"> ― Governance Powers</h2>
+
+<div style="margin-left:42px">
+	<li>Solidly</li>
+	<li>Solidex</li>
+	<li>PanicSwap</li>
+	<li>BeethovenX</li>
+	<li>ProtoFi</li>
+</div>
+<h2 class="fore" onclick="window.location='#a_kompound'"> ― Kompound Protocol</h2>
+
+<br><br><br><br>
+<hr class="hr1">
+<br id="a_birdsee"><br><br><br><br><br>
+<h2>Birds-eye View of Bankroll</h2>
+<span class="fore">Protocol-wise</span> BreakDown of asset allocations
+<br><br><br><br>
+<div style="overflow:auto;text-align:center">
+	<table align="center">
+		<thead>
+			<tr>
+				<td onclick="sortit(0,'mainstage_inv_ftm')">De-Fi Protocol</td>
+				<td onclick="sortit(1,'mainstage_inv_ftm')">Net Worth</td>
+				<td onclick="sortit(2,'mainstage_inv_ftm')">Dominance</td>
+			</tr>
+		</thead>
+		<tbody id="mainstage_inv_ftm">
+			<tr>
+				<td><img src="https://ftm.guru/icons/kucino.svg" style="position:relative;top:4px"> Kompound Protocol</td>
+				<td id="kpv_summ">0.00</td>
+				<td onclick="">0.000000%</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+
+<br><br><br><br><br><br>
+<hr class="hr1">
+<br id="a_gov"><br><br><br>
+<div class="govdiv" style="font-size:1.25em">
+	<h2> Governance Powers</h2>
+	<span class="fore">Voting Rights</span> of The Guru Network in external Protocols.
+	<br><br><br><br><br><br>
+
+
+	<h3><img src="https://ftm.guru/icons/solidly.svg" style="position:relative;top:6px" height="32px"> Solidly.Exchange</h3>
+	<span class="fore">We own The <b>veNFT #76</b>.</span><br><br>
+	<div class="cards">
+		<div class="card">
+			<br>
+			<span id="gov_solidly_vl"> ? </span>
+			<hr>
+			SOLID Locked
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_solidly_ul"> ? </span>
+			<hr>
+			Unlock Date
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_solidly_pow"> ? </span>
+			<hr>
+			Voting Power
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_solidly_dom"> ? </span>
+			<hr>
+			Global Dominance
+		</div>
+		<!--
+		<div class="card">
+			<br>
+			<span id="gov_solidly_mv"> ? </span>
+			<hr>
+			Market Value (USD)
+		</div>
+		-->
+	</div>
+
+
+	<br><br><br><br>
+	<h3><img src="https://ftm.guru/icons/solidex.svg" style="position:relative;top:6px" height="32px"> SolidexFinance.com</h3>
+	<span class="fore">We own multiple <b>vlSEX</b> locks..</span><br><br>
+	<div class="cards">
+		<div class="card">
+			<br>
+			<span id="gov_solidex_vl"> ? </span>
+			<hr>
+			SEX Locked
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_solidex_ul"> ? </span>
+			<hr>
+			Unlock Date
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_solidex_pow"> ? </span>
+			<hr>
+			Voting Power
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_solidex_dom"> ? </span>
+			<hr>
+			Global Dominance
+		</div>
+		<!--
+		<div class="card">
+			<br>
+			<span id="gov_solidex_mv"> ? </span>
+			<hr>
+			Market Value (USD)
+		</div>
+		-->
+	</div>
+
+
+	<br><br><br><br>
+	<h3><img src="https://ftm.guru/icons/oxd.svg" style="position:relative;top:6px" height="32px"> OxDAO.fi</h3>
+	<span class="fore">We own multiple <b>vlOXD</b> locks.</span><br><br>
+	<div class="cards">
+		<div class="card">
+			<br>
+			<span id="gov_oxdao_vl"> ? </span>
+			<hr>
+			OXD Locked
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_oxdao_ul"> ? </span>
+			<hr>
+			Unlock Date
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_oxdao_pow"> ? </span>
+			<hr>
+			Voting Power
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_oxdao_dom"> ? </span>
+			<hr>
+			Global Dominance
+		</div>
+		<!--
+		<div class="card">
+			<br>
+			<span id="gov_oxdao_mv"> ? </span>
+			<hr>
+			Market Value (USD)
+		</div>
+		-->
+	</div>
+
+
+	<br><br><br><br>
+	<h3><img src="https://ftm.guru/icons/panic.png" style="position:relative;top:6px" height="32px"> PanicSwap.com</h3>
+	<span class="fore">We <b>Lock PANIC</b>.</span><br><br>
+
+	<div class="cards">
+		<div class="card">
+			<br>
+			<span id="gov_panic_vl"> ? </span>
+			<hr>
+			PANIC Locked
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_panic_ul"> ? </span>
+			<hr>
+			Unlock Date
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_panic_pow"> ? </span>
+			<hr>
+			Voting Power
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_panic_dom"> ? </span>
+			<hr>
+			Global Dominance
+		</div>
+		<!--
+		<div class="card">
+			<br>
+			<span id="gov_panic_mv"> ? </span>
+			<hr>
+			Market Value (USD)
+		</div>
+		-->
+	</div>
+
+
+	<br><br><br><br>
+	<h3><img src="https://ftm.guru/icons/beets.png" style="position:relative;top:6px" height="32px"> Beets.fi</h3>
+	<span class="fore">We own <b>fBEETS</b>.</span><br><br>
+
+	<div class="cards">
+		<div class="card">
+			<br>
+			<span id="gov_fbeets_vl"> ? </span>
+			<hr>
+			fBEETS Owned
+		</div>
+		<!--
+		<div class="card">
+			<br>
+			<span id="gov_fbeets_pow"> ? </span>
+			<hr>
+			Voting Power
+		</div>
+		-->
+		<div class="card">
+			<br>
+			<span id="gov_fbeets_dom"> ? </span>
+			<hr>
+			Global Dominance
+		</div>
+		<!--
+		<div class="card">
+			<br>
+			<span id="gov_fbeets_mv"> ? </span>
+			<hr>
+			Market Value (USD)
+		</div>
+		-->
+	</div>
+
+
+	<br><br><br><br>
+	<h4><img src="https://ftm.guru/icons/beluga.png" style="position:relative;top:6px" height="32px"> Beluga.fi</h4>
+	We're yet to acquire Governance Rights at Beluga but will soon have some this fortnight.
+	<!--
+	We <b>Lock PANIC</b> perpetually by extending upto 2 years.
+	<br>PANIC Locked: <b id="gov_panic_vl"></b>
+	<br>Voting Power: <span id="gov_panic_power"></b>
+	<br>Global Dominance: <span id="gov_panic_dominance"></b>
+	-->
+
+
+	<br><br><br><br>
+	<h3><img src="https://ftm.guru/icons/protofi.png" style="position:relative;top:6px" height="32px"> ProtoFi.app</h3>
+	<span class="fore">We lock ELCT into <b>veELCT</b>.</span><br><br>
+
+	<div class="cards">
+		<div class="card">
+			<br>
+			<span id="gov_proto_vl"> ? </span>
+			<hr>
+			ELCT Locked
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_proto_pow"> ? </span>
+			<hr>
+			Voting Power
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_proto_ul"> ? </span>
+			<hr>
+			Unlock Date
+		</div>
+		<div class="card">
+			<br>
+			<span id="gov_proto_dom"> ? </span>
+			<hr>
+			Global Dominance
+		</div>
+		<!--
+		<div class="card">
+			<br>
+			<span id="gov_fbeets_mv"> ? </span>
+			<hr>
+			Market Value (USD)
+		</div>
+		-->
+	</div>
+</div gov>
+
+<br><br><br><br><br><br>
+<hr class="hr1">
+<br id="a_kompound"><br><br><br>
+
+<h2> Kompound Protocol</h2>
+Details of Investments and Collected Revenue from and into Guru Network's own <span class="fore">Kompound Protocol</span>.
+<br><br><br><br>
+<div style="overflow:auto;text-align:center">
+	<table align="center">
+		<thead><tr>
+			<td onclick="sortit(0,'mainstage')">⛓
+			<td onclick="sortit(1,'mainstage')">GRAIN#
+			<td onclick="sortit(2,'mainstage')">Our Position</td>
+			<td onclick="sortit(3,'mainstage')">Buys</td>
+			<td onclick="sortit(4,'mainstage')">Realized APR</td>
+			<td onclick="sortit(5,'mainstage')">Sells</td>
+			<td onclick="sortit(6,'mainstage')">Value Locked</td>
+			<td onclick="sortit(7,'mainstage')">Balance</td>
+			<td onclick="sortit(8,'mainstage')">Uses</td>
+		</tr></thead>
+		<tbody id="mainstage"></tbody>
+	</table>
+</div>
+
+<br><br><br><br><br><br>
+<hr class="hr1">
+<br><br><br><br>
+<div align="center"><i>Want to see more?<br><br>
+<a href="mailto:ftm1337@protonmail.com">📧</a> Let us know!</i><br>
+	<div class="lowerbar">
+	<a target="_blank" href="https://twitter.com/ftm1337"><img src="https://ftm.guru/crypto-icons/twitter.svg"></a>
+	<a target="_blank" href="https://t.me/ftm1337"><img src="https://ftm.guru/crypto-icons/telegram.svg"></a>
+	<a target="_blank" href="https://discord.com/invite/QpyfMarNrV"><img src="https://ftm.guru/crypto-icons/discord.svg"></a>
+	</div>
+</div>
+<br><br><br><br><br><br>
+<div onclick="pantvl()">
+	<span style="font-size:2.5em;font-weight:bold" id="pantvl" class="fore">$0.000</span><sup style="font-size:1.2em;position:relative;top: -14px;">⟳</sup><br>
+	(Total Value Locked on FTM.guru)
+</div>
+
+<br><br>
+<div class="lowerbar">Powered by Guru Network.
+<br>
+	<a target="_blank" href="https://kcc.guru">KCC.guru</a>
+	<a target="_blank" href="https://ftm.guru">FTM.guru</a>
+	<a target="_blank" href="https://fmc.guru">FMC.guru</a>
+	<a target="_blank" href="https://fmc.guru">MTV.guru</a>
+	<br><br>
+	<a target="_blank" href="https://kcc.guru"><img src="https://ftm.guru/crypto-icons/kcc.png"></a>
+	<a target="_blank" href="https://ftm.guru"><img src="https://ftm.guru/crypto-icons/64.png"></a>
+	<a target="_blank" href="https://fmc.guru"><img src="https://ftm.guru/crypto-icons/FMC.svg"></a>
+	<a target="_blank" href="https://mtv.guru"><img src="https://ftm.guru/crypto-icons/mtv.png"></a>
+	<a target="_blank" href="https://medium.com/@ftm1337"><img src="https://ftm.guru/crypto-icons/medium.svg"></a>
+	<a target="_blank" href="https://www.coingecko.com/coins/elite-1337"><img src="https://ftm.guru/crypto-icons/gecko.svg"></a>
+	<a target="_blank" href="https://coinmarketcap.com/currencies/elite-1337"><img src="https://ftm.guru/crypto-icons/cmc.svg"></a>
+	<a target="_blank" href="https://defillama.com/protocol/ftmguru"><img src="https://ftm.guru/crypto-icons/defillama.svg"></a>
+	<a target="_blank" href="https://defillama.com/protocol/ftmguru"><img src="https://ftm.guru/crypto-icons/nomics.svg"></a>
+	<!--<a target="_blank" href="https://defillama.com/protocol/kccguru"><img src="https://ftm.guru/crypto-icons/defillama.svg"></a>-->
+</div>
+
+<br><br><br><br><br><hr class="hr1">
+
+</div>
+</body>
+<script src="../web3.min.js"></script>
+<script>
+window.addEventListener('load',async function()
+{
+	fetch("https://pro-openapi.debank.com/v1/user/complex_protocol_list?id=?id=0x167d87a906da361a10061fe42bbe89451c2ee584")
+	.then(res=>res.json())
+	.then(rd=>{console.log(rd);pfv+=rd.total_usd_value*1e18;$("pf").innerHTML = fornumstd(pfv,18);});
+	//fetch("https://openapi.debank.com/v1/user/complex_protocol_list?id=0x167d87a906da361a10061fe42bbe89451c2ee584")
+	fetch("https://openapi.debank.com/v1/user/simple_protocol_list?id=0x167d87a906da361a10061fe42bbe89451c2ee584")
+	.then(res=>res.json())
+	.then(rd=>{cplx(rd)});
+
+}, false);
+
+
+
+function fornum(n,d)
+{
+	_n=(Number(n)/10**Number(d));
+	n_=_n;
+	if(_n>1e18){n_=(_n/1e18).toFixed(2)+"Qt"}
+	else if(_n>1e15){n_=(_n/1e15).toFixed(2)+"Qd"}
+	else if(_n>1e12){n_=(_n/1e12).toFixed(2)+"Tn"}
+	else if(_n>1e9){n_=(_n/1e9).toFixed(2)+"Bn"}
+	else if(_n>1e6){n_=(_n/1e6).toFixed(2)+"Mn"}
+	else if(_n>1e3){n_=(_n/1e3).toFixed(2)+"Th"}
+	else if(_n>0){n_=(_n/1e0).toFixed(5)+""}
+	return(n_);
+}
+function $(_) {return document.getElementById(_);}
+function cw(){}
+function switchchain(v)
+{
+	if(v=="250"){window.location="https://ftm.guru/GRAIN"}
+	if(v=="321"){window.location="https://kcc.guru/kompound"}
+	if(v=="62621"){window.location="https://mtv.guru"}
+}
+function dive()
+{
+	if($("ddb").parentElement.parentElement.getAttribute("open")==null)
+	{
+		$("ddb").parentElement.parentElement.setAttribute("open","");
+		$("ddb").children[0].innerHTML="Deeper Dive"
+	}
+	else
+	{
+		$("ddb").parentElement.parentElement.removeAttribute("open")
+		$("ddb").children[0].innerHTML="Dive Deeper"
+	}
+}
+function togcar()
+{
+	ac2 = document.getElementsByClassName("cardhide");
+	for(i=0;i< ac2.length;i++)
+	{
+		ac2[i].style.display=ac2[i].style.display==""?"none":""
+	}
+}
+
+pfv=0;kpv=0;
+
+function cplx(rdd)
+{
+	for(l=0;l< rdd.length;l++)
+	{
+		gtrdd = document.createElement("tr");
+		gtrdd.innerHTML = `
+			<td><img src="${rdd[l].logo_url}" style="position:relative;top:6px"> ${rdd[l].name}</td>
+			<td>${(rdd[l].net_usd_value).toLocaleString(undefined,{minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+			<td>${rdd[l].tvl==0?"?":(rdd[l].net_usd_value/rdd[l].tvl*100).toFixed(6)}%</td>
+		`;
+		$("mainstage_inv_ftm").append(gtrdd)
+	}
+	sortit(1,'mainstage_inv_ftm');sortit(1,'mainstage_inv_ftm');
+}
+function giu(ari)
+{
+	rst = ""
+	//console.log("ari is", ari)
+	for(i=0;i< ari.length;i++)
+	{rst+= (`<img src="https://ftm.guru/icons/${ari[i]}">`)}
+	return rst
+}
+function fornumstd(n,d){return Number((Number(n)/10**d).toFixed(2)).toLocaleString()}
+grabi=[{"inputs":[{"internalType":"address","name":"_w","type":"address"},{"internalType":"address","name":"_m","type":"address"},{"internalType":"address","name":"_e","type":"address"},{"internalType":"uint8","name":"_p","type":"uint8"},{"internalType":"address","name":"_R","type":"address"},{"internalType":"address[]","name":"_rA","type":"address[]"},{"internalType":"address[]","name":"_rB","type":"address[]"},{"internalType":"string","name":"_id","type":"string"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"src","type":"address"},{"indexed":true,"internalType":"address","name":"guy","type":"address"},{"indexed":false,"internalType":"uint256","name":"wad","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Compounded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Staked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"src","type":"address"},{"indexed":true,"internalType":"address","name":"dst","type":"address"},{"indexed":false,"internalType":"uint256","name":"wad","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Withdrawn","type":"event"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"Eliteness","outputs":[{"internalType":"address","name":"ELITE","type":"address"},{"internalType":"uint256","name":"ELITES","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"allnums","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"guy","type":"address"},{"internalType":"uint256","name":"wad","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"guy","type":"address"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_mw","type":"uint256"},{"internalType":"uint256","name":"_wi","type":"uint256"},{"internalType":"uint256","name":"_pf","type":"uint256"},{"internalType":"address","name":"_t","type":"address"},{"internalType":"uint256","name":"_df","type":"uint256"}],"name":"config","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"dao","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"declareEmergency","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"}],"name":"deposit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"doHardWork","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"earn","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"u","type":"address"}],"name":"eliteness","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"emergency","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"}],"name":"emergencyWithdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"id","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"info","outputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"mc","outputs":[{"internalType":"contract IMasterchef","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"n","type":"uint256"}],"name":"pullElite","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"elite","type":"address"},{"internalType":"uint256","name":"elites","type":"uint256"}],"name":"pushElite","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"tokenAddress","type":"address"},{"internalType":"uint256","name":"tokens","type":"uint256"}],"name":"rescue","outputs":[{"internalType":"bool","name":"success","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"revokeEmergency","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"routeA","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"routeB","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"router","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"salvage","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"dst","type":"address"},{"internalType":"uint256","name":"wad","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"src","type":"address"},{"internalType":"address","name":"dst","type":"address"},{"internalType":"uint256","name":"wad","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"treasury","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"tvl","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"utvl","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"want","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amt","type":"uint256"}],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+function sortit(n,id) {
+  var t, r, z, i, x, y, v, b, c = 0;
+  t = document.getElementById(id);
+  z = true;
+  b = "a";
+  while (z) {
+    z = false;
+    r = t.rows;
+    for (i = 0; i < (r.length - 1); i++) {
+      v = false;
+      x = (r[i].getElementsByTagName("TD")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
+      if(isFinite(x)){x=Number(x)}else{x=x.toLowerCase()}
+      y = (r[i + 1].getElementsByTagName("TD")[n].innerHTML).replaceAll(/,| |\.|\$|%/g,'');
+      if(isFinite(y)){y=Number(y)}else{y=y.toLowerCase()}
+      if (b == "a") {
+        if ((x) > (y)) {
+          v= true;
+          break;
+        }
+      } else if (b == "d") {
+        if ((x) < (y)) {
+          v = true;
+          break;
+        }
+      }
+    }
+    if (v) {
+      r[i].parentNode.insertBefore(r[i + 1], r[i]);
+      z = true;
+      c ++;
+    } else {
+      if (c == 0 && b == "a") {
+        b = "d";
+        z = true;
+      }
+    }
+  }
+}
+const addCSS = s => document.head.appendChild(document.createElement("style")).innerHTML=s;
+
+</script>
+</html>
