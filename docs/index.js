@@ -320,8 +320,8 @@ option = {
 	let tot_1 = TADATA[TADATA.length-1][2] + TADATA[TADATA.length-1][3] + TADATA[TADATA.length-1][4];
 	let tot_2 = TADATA[TADATA.length-2][2] + TADATA[TADATA.length-2][3] + TADATA[TADATA.length-2][4];
 	$("topstat-date").innerHTML = (new Date(TADATA[TADATA.length-1][0])).toDateString()
-	$("topstat-total").innerHTML = "$" + TADATA[TADATA.length-1][2]
-	$("topstat-change").innerHTML = ( ( tot_1 - tot_2 ) / tot_1 * 100 ).toFixed(2) + "%"
+	$("topstat-total").innerHTML = "$" + (tot_1).toLocaleString()
+	$("topstat-change").innerHTML = ( ( tot_1 - tot_2 ) / tot_2 * 100 ).toFixed(2) + "%"
 
 	return;
 
