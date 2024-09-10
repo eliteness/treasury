@@ -272,6 +272,7 @@ option = {
           color: '#fff'
         }
       },
+      lineStyle : { width: 4 },
     },
     {
       name: 'Class A',
@@ -308,6 +309,22 @@ option = {
       emphasis: { focus: 'series' },
       data: TADATA.map(i=>i[1]*1337),
       barWidth: 10
+    },
+    {
+      name: 'Treasury per ELITE',
+      type: 'line',
+      yAxisIndex: 1,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=>Math.floor((i[2]+i[3]+i[4]) / (1337))),
+      label: {
+        show: false,
+        position: 'bottom',
+        textStyle: {
+          fontSize: 20,
+          color: '#fff'
+        }
+      },
+      lineStyle : { width: 4 },
     },
   ]
 };
