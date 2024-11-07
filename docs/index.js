@@ -217,7 +217,13 @@ async function dexstats() {
 	]
 
 
-
+for(i=0;i<TADATA.length;i++) {
+	let ri = document.createElement("h3");
+	ri.innerHTML =	`
+		<h3><a target="_blank" href="https://ftm.guru/docs/treasury/${TADATA[i][0]}/">${TADATA[i][0]}</h3>
+	`;
+	$("reportslist").appendChild(ri)
+}
 
 
 
