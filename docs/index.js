@@ -212,13 +212,15 @@ async function dexstats() {
 
 	TADATA = [
 		// [ wen, marketPrice, classA, classB, classC ]
-		[ "2022-11-05",	  678,       24_000,        19_000,         98_500 ],
-		[ "2023-06-07",	 1010,      160_000,        85_000,        245_000 ],
-		[ "2023-10-09",	  784,      102_500,        97_000,        235_000 ],		// count 800k ELR @ $0.015
-		[ "2024-03-19",	 2080,      336_000,       215_000,      1_234_000 ],
-		[ "2024-05-26",	 3692,      640_000,     1_075_000,        255_000 ],
-		[ "2024-08-05",	 1174,	    970_000,       302_000,        101_000 ],
-		[ "2024-11-07",	 2500,	  1_074_000,       529_000,        107_000 ],
+		[ "2022-11-05",	  678/300_000,       24_000,        19_000,         98_500 ],
+		[ "2023-06-07",	 1010/300_000,      160_000,        85_000,        245_000 ],
+		[ "2023-10-09",	  784/300_000,      102_500,        97_000,        235_000 ],		// count 800k ELR @ $0.015
+		[ "2024-03-19",	 2080/300_000,      336_000,       215_000,      1_234_000 ],
+		[ "2024-05-26",	 3692/300_000,      640_000,     1_075_000,        255_000 ],
+		[ "2024-08-05",	 1174/300_000,	    970_000,       302_000,        101_000 ],
+		[ "2024-11-07",	 2500/300_000,	  1_074_000,       529_000,        107_000 ],
+		[ "2025-02-28",	  957/300_000,	    900_000,       100_000,         50_000 ],
+		[ "2025-04-05",	     0.002647,	    769_000,       300_000,         33_000 ],
 	]
 
 
@@ -279,7 +281,7 @@ option = {
       type: 'line',
       yAxisIndex: 1,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>i[1]),
+      data: TADATA.map(i=>i[1].toPrecision(6)),
       label: {
         show: false,
         position: 'bottom',
@@ -320,18 +322,18 @@ option = {
     },
     {
       name: 'Fully Diluted Valuation',
-      type: 'bar',
+      type: 'scatter',
       stack: 'Market Capitalizations',
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>i[1]*1337),
-      barWidth: 10
+      data: TADATA.map(i=> Math.floor(i[1]*400_000_000)),
+      //barWidth: 20,
     },
     {
       name: 'Treasury per ELITE',
       type: 'line',
       yAxisIndex: 1,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>Math.floor((i[2]+i[3]+i[4]) / (1337))),
+      data: TADATA.map(i=> ((i[2]+i[3]+i[4]) / (400_000_000)).toPrecision(6) ),
       label: {
         show: false,
         position: 'bottom',
