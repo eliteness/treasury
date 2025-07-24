@@ -3,6 +3,7 @@
 @font-face{ font-family:light;src: url(https://eliteness.network/fonts/neue-haas-grotesk/NeueHaasDisplayLight.ttf);}
 @font-face{ font-family:light_italic;src: url(https://eliteness.network/fonts/neue-haas-grotesk/NeueHaasDisplayLightItalic.ttf);}
 @font-face{ font-family:regular;src: url(https://eliteness.network/fonts/neue-haas-grotesk/NeueHaasDisplayRoman.ttf);}
+@font-face{ font-family:mono;src: url(https://eliteness.network/fonts/GSC/gsc_mono.ttf);}
 *{
 	font-family:regular;
 	scroll-behavior: smooth !important;
@@ -406,6 +407,30 @@ button:disabled {
 }
 
 
+#Tablulated .c2a {
+	width: inherit;
+}
+
+#reports-tabulated {
+	margin: auto;
+}
+
+#reports-tabulated-thead tr td {
+    font-family: bold;
+    font-size: 1.25em;
+}
+
+#reports-tabulated-tbody tr td{
+    text-align: right;
+    padding: 8px !important;
+    min-width: 100px;
+    font-family: mono;
+}
+
+#reports-tabulated-tbody tr td:first-child{
+    text-align: left;
+}
+
 @media (max-width: 700px) {
     .topstats {
         flex-direction: column;
@@ -419,10 +444,6 @@ button:disabled {
         ;
     }
 
-}
-
-
-@media (min-width: 700px) {
     .popup {
         width: 90%;
     }

@@ -7,7 +7,7 @@ window.addEventListener(
 	async function() {
 		console.log("waitin for 3 secs..");
 		$("cw_m").innerHTML = "Connecting.. Please wait."
-		setTimeout(async () => { await basetrip(); }, 3000);
+		setTimeout(async () => { await basetrip(); }, 100);
 	},
 	false
 );
@@ -212,25 +212,60 @@ async function dexstats() {
 
 	TADATA = [
 		// [ wen, marketPrice, classA, classB, classC ]
-		[ "2022-11-05",	  678/300_000,       24_000,        19_000,         98_500 ],
-		[ "2023-06-07",	 1010/300_000,      160_000,        85_000,        245_000 ],
-		[ "2023-10-09",	  784/300_000,      102_500,        97_000,        235_000 ],		// count 800k ELR @ $0.015
-		[ "2024-03-19",	 2080/300_000,      336_000,       215_000,      1_234_000 ],
+		[ "2022-04-03",	 2503/300_000,       75_000,             0,              0 ],
+		[ "2022-08-18",	 2619/300_000,       30_000,        24_000,              0 ],
+		[ "2022-11-05",	 2086/300_000,       24_000,        19_000,         98_500 ],
+		[ "2023-01-09",	  948/300_000,       57_000,             0,        270_000 ],
+		[ "2023-06-29",	 1019/300_000,      160_000,        85_000,        245_000 ],
+		[ "2023-10-09",	  784/300_000,      102_500,        51_000,        235_000 ],		// count 800k ELR @ $0.015
+		[ "2024-03-19",	 2350/300_000,      336_000,       215_000,      1_234_000 ],
 		[ "2024-05-26",	 3692/300_000,      640_000,     1_075_000,        255_000 ],
 		[ "2024-08-05",	 1174/300_000,	    970_000,       302_000,        101_000 ],
-		[ "2024-11-07",	 2500/300_000,	  1_074_000,       529_000,        107_000 ],
+		[ "2024-11-07",	 2543/300_000,	  1_074_000,       529_000,        107_000 ],
 		[ "2025-02-28",	  957/300_000,	    900_000,       100_000,         50_000 ],
 		[ "2025-04-05",	     0.002647,	    769_000,       300_000,         33_000 ],
+		[ "2025-07-23",	     0.002357,	  1_120_000,       121_000,         65_000 ],
 	]
 
-
-for(i=0;i<TADATA.length;i++) {
-	let ri = document.createElement("h3");
-	ri.innerHTML =	`
-		<h3><a target="_blank" href="https://ftm.guru/docs/treasury/${TADATA[i][0]}/">${TADATA[i][0]}</h3>
+	$("reports-tabulated-thead").innerHTML = `
+		<tr>
+			<td>D:Date</td>
+			<td>P:Price</td>
+			<td>R:ABC/P</td>
+			<td>M:MktCap</td>
+			<td>T:A+B+C</td>
+			<td>Class A</td>
+			<td>Class B</td>
+			<td>Class C</td>
+		</tr>
 	`;
-	$("reportslist").appendChild(ri)
-}
+
+
+
+	for(i=TADATA.length-1; i >= 0; i--) {
+		let tri = document.createElement("tr");
+		tri.innerHTML =	`
+			<td>${ TADATA[i][0] }</td>
+			<td>$${ TADATA[i][1].toFixed(6) }</td>
+			<td>$${ (TADATA[i][1] * 400_000_000).toLocaleString(undefined,{maximumFractionDigits:0}) }</td>
+			<td>$${ ((TADATA[i][2]+TADATA[i][3]+TADATA[i][4]) / 400_000_000).toFixed(6) }</td>
+			<td>$${ (TADATA[i][2]+TADATA[i][3]+TADATA[i][4]).toLocaleString(undefined,{maximumFractionDigits:0}) }</td>
+			<td>$${ TADATA[i][2].toLocaleString(undefined,{maximumFractionDigits:0}) }</td>
+			<td>$${ TADATA[i][3].toLocaleString(undefined,{maximumFractionDigits:0}) }</td>
+			<td>$${ TADATA[i][4].toLocaleString(undefined,{maximumFractionDigits:0}) }</td>
+		`;
+		$("reports-tabulated-tbody").appendChild(tri)
+
+
+
+		let ri = document.createElement("h3");
+		ri.innerHTML =	`
+			<h3><a target="_blank" href="https://ftm.guru/docs/treasury/${TADATA[i][0]}/">Read report from ${TADATA[i][0]} ↗ </a></h3>
+		`;
+		$("reportslist").appendChild(ri)
+	}
+
+
 
 
 
