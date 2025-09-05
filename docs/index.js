@@ -208,6 +208,21 @@ const timeFormat = (timestamp) => {const seconds = Math.floor((Date.now() - time
 
 async function dexstats() {
 
+	// Address list
+	TRADDRS = [
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+	]
+
 	// Reduce ELITE component from all positions.
 
 	TADATA = [
