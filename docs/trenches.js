@@ -209,37 +209,18 @@ const timeFormat = (timestamp) => {const seconds = Math.floor((Date.now() - time
 async function dexstats() {
 
 	// Address list
-	TRADDRS = [
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
+	TREASURIES_LIST= [
+		["0x0402af87a3024a5c767b47f0ad42d887014e1d01",""],
+		["0x3ae524d3d330130ab22c3719ca913a3d4a8de504",""],
+		["0x4496323dd41417634b8412091a0b821c36922408",""]
 	]
 
 	// Reduce ELITE component from all positions.
 
 	TADATA = [
-		// [ wen, marketPrice, classA, classB, classC ]
-		[ "2022-04-03",	 2503/300_000,       75_000,             0,              0 ],
-		[ "2022-08-18",	 2619/300_000,       30_000,        24_000,              0 ],
-		[ "2022-11-05",	 2086/300_000,       24_000,        19_000,         98_500 ],
-		[ "2023-01-09",	  948/300_000,       57_000,             0,        270_000 ],
-		[ "2023-06-29",	 1019/300_000,      160_000,        85_000,        245_000 ],
-		[ "2023-10-09",	  784/300_000,      102_500,        51_000,        235_000 ],		// count 800k ELR @ $0.015
-		[ "2024-03-19",	 2350/300_000,      336_000,       215_000,      1_234_000 ],
-		[ "2024-05-26",	 3692/300_000,      640_000,     1_075_000,        255_000 ],
-		[ "2024-08-05",	 1174/300_000,	    970_000,       302_000,        101_000 ],
-		[ "2024-11-07",	 2543/300_000,	  1_074_000,       529_000,        107_000 ],
-		[ "2025-02-28",	  957/300_000,	    900_000,       100_000,         50_000 ],
-		[ "2025-04-05",	     0.002647,	    769_000,       300_000,         33_000 ],
-		[ "2025-07-23",	     0.002357,	  1_120_000,       121_000,         65_000 ],
+		// [ wen, marketPrice, classA, classB, classC, supply ]
+		[ "2025-10-16",	     0.004767,	    240_000,         4_000,              0,         64_543_000, ],
+		[ "2025-10-16",	     0.004767,	    235_634,         4_197,              0,         1e8 - (3_192_298 + 494_935 + 20_000_000 +7_816_806 + 348_437 +1_795_766 + 1_800_000), ],
 	]
 
 	$("reports-tabulated-thead").innerHTML = `
@@ -278,6 +259,15 @@ async function dexstats() {
 			<h3><a target="_blank" href="https://ftm.guru/docs/treasury/${TADATA[i][0]}/">Read report from ${TADATA[i][0]} ↗ </a></h3>
 		`;
 		$("reportslist").appendChild(ri)
+	}
+
+	for(i=0; i<TREASURIES_LIST.length; i++){
+		let ri = document.createElement("div");
+		ri.innerHTML =	`
+			<a target="_blank" href="https://debank.com/profile/${TREASURIES_LIST[i][0]}/">${TREASURIES_LIST[i][0]} ${TREASURIES_LIST[i][1]} ↗ </a>
+		`;
+		$("treasuries_list").appendChild(ri)
+
 	}
 
 
@@ -321,27 +311,11 @@ option = {
   ],
   legend : {
     selected: {
-      'ELITE Market Price' : true,
+      'TRENCHES Market Price' : true,
       'Fully Diluted Valuation' : true,
     }
   },
   series: [
-    {
-      name: 'ELITE Market Price',
-      type: 'line',
-      yAxisIndex: 1,
-      emphasis: { focus: 'series' },
-      data: TADATA.map(i=>i[1].toFixed(6)),
-      label: {
-        show: false,
-        position: 'bottom',
-        textStyle: {
-          fontSize: 20,
-          color: '#fff'
-        }
-      },
-      lineStyle : { width: 4 },
-    },
     {
       name: 'Class A',
       type: 'bar',
@@ -375,15 +349,31 @@ option = {
       type: 'scatter',
       stack: 'Market Capitalizations',
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=> Math.floor(i[1]*400_000_000)),
+      data: TADATA.map(i=> Math.floor(i[1]*i[5])),
       //barWidth: 20,
     },
     {
-      name: 'Treasury per ELITE',
+      name: 'TRENCHES Market Price',
       type: 'line',
       yAxisIndex: 1,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=> ((i[2]+i[3]+i[4]) / (400_000_000)).toFixed(6) ),
+      data: TADATA.map(i=>i[1].toFixed(6)),
+      label: {
+        show: false,
+        position: 'bottom',
+        textStyle: {
+          fontSize: 20,
+          color: '#fff'
+        }
+      },
+      lineStyle : { width: 4 },
+    },
+    {
+      name: 'Treasury per TRENCHES',
+      type: 'line',
+      yAxisIndex: 1,
+      emphasis: { focus: 'series' },
+      data: TADATA.map(i=> ( ( (i[2]+i[3]+i[4]) / i[5] ).toFixed(6) ) ),
       label: {
         show: false,
         position: 'bottom',
