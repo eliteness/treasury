@@ -73,6 +73,7 @@
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'Visualization')">Visualization</button>
             <button class="tablinks" onclick="openTab(event, 'Tablulated')">Tablulated</button>
+            <button class="tablinks" onclick="openTab(event, 'Treasuries')">Addressbook</button
             <button class="tablinks" onclick="openTab(event, 'Reports')">Reports</button>
         </div>
 
@@ -81,13 +82,7 @@
         <div id="Visualization" class="tabcontent">
         	<div id="chart1" class="echarts" style="width: 100%;height:100%;min-height: 480px; margin:50px auto">
         	</div>
-			<div style="font-size: 0.9em;text-align: center; color:#eef;">
-				<h3>Footnotes</h3>
-				Track Assets Under Management on <a target="_blank" href="https://debank.com/bundles/461">DeBank's Bundle 461</a>, including proof-of-reserves for public sub-protocols.
-				<br><br>
-				ELITE price before March 2025 has been adjusted to 1/300000 to reflect the 1:300K <a target="_blank" href="https://medium.com/@ftm1337/elite-eliteness-network-31086677e2c2">migration from old ELITE</a> on Fantom to new omnichain ELITE.
-				<br><br>
-				Token Supply number represents only issued the supply not held by Treasury. It is not Circulating supply, neither Total Supply or Unlocked supply, but only the Supply that is externally owned by anyone else, excluding the Treasury itself.
+			<div id="chart-footer"style="font-size: 0.9em;text-align: center; color:#eef;">
 			</div>
         </div>
 
@@ -110,6 +105,16 @@
 				<h3>A</h3> Sum of all Class A assets in Treasury: Top 100 cryptocurrencies & equivalents above $1 Billion valuation.
 				<h3>B</h3> Sum of all Class B assets in Treasury: All other smaller cryptocurrencies & equivalents above $1 Million valuation.
 				<h3>C</h3> Sum of all Class C assets in Treasury: Everything else, including memecoins, assets under $1 Million valation, Locked/vesting assets, NFTs, etc.
+				<h3>S</h3> Total Supply minus Supply held by Treasury.
+        	</div>
+        </div>
+
+        <!-- Tab content -->
+        <div id="Treasuries" class="tabcontent">
+            <div class="c2a">
+				<h2>List of Treasury Addresses</h2>
+				<div id="treasuries_list">
+				</div>
         	</div>
         </div>
 
@@ -158,31 +163,7 @@
 
     <!--<script src="https://ftm.guru/ethers-5.2.umd.min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
-    <script src="index.js"></script>
-    <script>
-        RPC_URL = "https://rpc.ankr.com/fantom";
-        CHAINID = 250;
-        CHAIN_NAME = "Fantom Opera";
-        CHAIN_GAS = "FTM";
-        DECIMAL = 18;
-        EXPLORE = "https://ftmscan.com/";
-        EXPLORT = EXPLORE + "tx/";
-        EXPLORA = EXPLORE + "address/";
-        TVLGURU = "0x0786c3a78f5133f08c1c70953b8b10376bc6dcad";
-        NATIVE = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
-        NATIVE_NAME = "FTM";
-        NATIVE_LOGO = "https://ftm.guru/icons/ftm.svg";
-        LOCKER_ROOM = "0x2f20A659601d1c161A108E0725FEF31256a907ad";
-        FACTORY = "0xc6366efd0af1d09171fe0ebf32c7943bb310832a";
-        AGENT = "0x167d87a906da361a10061fe42bbe89451c2ee584";
-        PERCENT = 0.01337e18;
-        LOGOS = "https://cdn.jsdelivr.net/gh/unified-defi/equalizer-tokens@latest/fantom/tokens/128x128/";
-        GAUGE_REWARD_0 = "EQUAL";
-
-
-
-
-        TREASURY_TOKEN_NAME = "ELITE"
-    </script>
+    <script src="treasury.js"></script>
+    <script src="elite.js"></script>
 </body>
 </html>
