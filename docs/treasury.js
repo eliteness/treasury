@@ -114,6 +114,10 @@ function fornum(n,d)
 	return(n_);
 }
 
+function toLocaleStringFD(min,max, n) {
+	return Number(n).toLocaleString(undefined,{ minimumFractionDigits:min, maximumFractionDigits:max})
+}
+
 async function cw()
 {
 	let cs = await cw2(); cs?console.log("Good to Transact"):cw2();
@@ -227,14 +231,14 @@ async function dexstats() {
 		let tri = document.createElement("tr");
 		tri.innerHTML =	`
 			<td>${ TADATA[i][0] }</td>
-			<td>$${ TADATA[i][1].toFixed(6) }</td>
-			<td>$${ (TADATA[i][1] * 400_000_000).toLocaleString(undefined,{maximumFractionDigits:0}) }</td>
-			<td>$${ ((TADATA[i][2]+TADATA[i][3]+TADATA[i][4]) / 400_000_000).toFixed(6) }</td>
-			<td>$${ (TADATA[i][2]+TADATA[i][3]+TADATA[i][4]).toLocaleString(undefined,{maximumFractionDigits:0}) }</td>
-			<td>$${ TADATA[i][2].toLocaleString(undefined,{maximumFractionDigits:0}) }</td>
-			<td>$${ TADATA[i][3].toLocaleString(undefined,{maximumFractionDigits:0}) }</td>
-			<td>$${ TADATA[i][4].toLocaleString(undefined,{maximumFractionDigits:0}) }</td>
-			<td>$${ TADATA[i][5].toLocaleString(undefined,{maximumFractionDigits:0}) }</td>
+			<td>$${ toLocaleStringFD(6,6, TADATA[i][1] ) }</td>
+			<td>$${ toLocaleStringFD(6,6, (TADATA[i][2]+TADATA[i][3]+TADATA[i][4]) / TADATA[i][5] ) }</td>
+			<td>$${ toLocaleStringFD(0,0, TADATA[i][1] * TADATA[i][5] ) }</td>
+			<td>$${ toLocaleStringFD(0,0, (TADATA[i][2]+TADATA[i][3]+TADATA[i][4]) ) }</td>
+			<td>$${ toLocaleStringFD(0,0, TADATA[i][2] ) }</td>
+			<td>$${ toLocaleStringFD(0,0, TADATA[i][3] ) }</td>
+			<td>$${ toLocaleStringFD(0,0, TADATA[i][4] ) }</td>
+			<td> ${ toLocaleStringFD(0,0, TADATA[i][5] ) }</td>
 		`;
 		$("reports-tabulated-tbody").appendChild(tri)
 
@@ -292,7 +296,7 @@ option = {
   },
   xAxis: [
     {
-      type: 'category',
+      type: 'time',
       data: TADATA.map(i=>i[0])
     }
   ],
@@ -312,27 +316,28 @@ option = {
       type: 'bar',
       stack: 'Assets',
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>i[2])
+      data: TADATA.map(i=>( [ (new Date(i[0])).valueOf(), i[2] ] ) ),
     },
     {
       name: 'Class B',
       type: 'bar',
       stack: 'Assets',
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>i[3])
+      data: TADATA.map(i=>( [ (new Date(i[0])).valueOf(), i[3] ] ) ),
     },
     {
       name: 'Class C',
       type: 'bar',
       stack: 'Assets',
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>i[4])
+      data: TADATA.map(i=>( [ (new Date(i[0])).valueOf(), i[4] ] ) ),
+      opacity: 0.5
     },
     {
       name: 'Total A+B+C',
       type: 'scatter',
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>i[2]+i[3]+i[4]),
+      data: TADATA.map(i=>( [ (new Date(i[0])).valueOf(), i[2]+i[3]+i[4] ] ) ),
       color: '#fff',
     },
     {
@@ -340,7 +345,7 @@ option = {
       type: 'scatter',
       stack: 'Market Capitalizations',
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=> Math.floor(i[1]*i[5])),
+      data: TADATA.map(i=> ( [ (new Date(i[0])).valueOf(), Math.floor(i[1]*i[5]) ] ) ),
       //barWidth: 20,
     },
     {
@@ -348,7 +353,7 @@ option = {
       type: 'line',
       yAxisIndex: 1,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=>i[1].toFixed(6)),
+      data: TADATA.map(i=>( [ (new Date(i[0])).valueOf(), i[1].toFixed(6) ] ) ),
       label: {
         show: false,
         position: 'bottom',
@@ -364,7 +369,7 @@ option = {
       type: 'line',
       yAxisIndex: 1,
       emphasis: { focus: 'series' },
-      data: TADATA.map(i=> ( ( (i[2]+i[3]+i[4]) / i[5] ).toFixed(6) ) ),
+      data: TADATA.map(i=>( [ (new Date(i[0])).valueOf(), ( ( (i[2]+i[3]+i[4]) / i[5] ).toFixed(6) ) ] ) ),
       label: {
         show: false,
         position: 'bottom',
