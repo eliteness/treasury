@@ -34,13 +34,6 @@
         </div>
     </div>
 
-    <div class="subnav" style="display:none">
-        <div class="subnav-link"><a href="#a-trade">Trade</a></div>
-        <div class="subnav-link"><a href="#a-order">Orderbook</a></div>
-        <div class="subnav-link"><a href="#a-addlp">Liquidity</a></div>
-        <div class="subnav-link"><a href="#a-posit">Positions</a></div>
-        <div class="subnav-link"><a href="https://eliteness.network/fertilizer">Farm & Earn</a></div>
-    </div>
 
     <div id="main-area">
         <div class="headline">
@@ -55,90 +48,19 @@
         </div> -->
 
         <div class="topstats">
-            <div class="topstat">
-                <div id="topstat-date">--- ---, ----</div>
-                <div>Date of Last Report</div>
+            <div class="topstat" onclick="window.location='./elite'">
+                <div id="topstat-date"><img height="20px" src="https://ftm.guru/icons/eliteness.png"></img> ELITE</div>
+                <div>View Eliteness.Network Treasury</div>
             </div>
-            <div class="topstat" onclick="document.getElementsByClassName('tablinks')[2].click();window.location='#Explore'">
-                <div id="topstat-total">$ ---</div>
-                <div>Latest Asset Valuation</div>
+            <div class="topstat" onclick="window.location='./scale'">
+                <div id="topstat-date"><img height="20px" src="https://ftm.guru/icons/scale.png"> SCALE</div>
+                <div>View Scale.Farm Treasury</div>
             </div>
-            <div class="topstat">
-                <div id="topstat-rfv">---.--%</div>
-                <div>Implied Treasury per Token</div>
-            </div>
-            <div class="topstat">
-                <div id="topstat-change">---.--%</div>
-                <div>Growth from Previous</div>
-            </div>
-            <div class="topstat">
-                <div id="topstat-mktcap">---.--%</div>
-                <div>Outstanding Market Cap.</div>
-            </div>
-            <div class="topstat">
-                <div id="topstat-price">---.--%</div>
-                <div>Open-market Token Price</div>
+            <div class="topstat" onclick="window.location='./trenches'">
+                <div id="topstat-date"><img height="20px" src="https://ftm.guru/icons/trenches.png"> TRENCHES</div>
+                <div>View Trenches.Fund Treasury</div>
             </div>
         </div>
-
-        <!-- Tab Navigation -->
-        <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'Visualization')">Visualization</button>
-            <button class="tablinks" onclick="openTab(event, 'Tablulated')">Tablulated</button>
-            <button class="tablinks" onclick="openTab(event, 'Treasuries')">Addressbook</button>
-            <button class="tablinks" onclick="openTab(event, 'Reports')">Reports</button>
-        </div>
-
-
-        <!-- Tab content -->
-        <div id="Visualization" class="tabcontent">
-        	<div id="chart1" class="echarts" style="width: 100%;height:100%;min-height: 480px; margin:50px auto">
-        	</div>
-			<div id="chart-footer"style="font-size: 0.9em;text-align: center; color:#eef;">
-			</div>
-        </div>
-
-        <!-- Tab content -->
-        <div id="Tablulated" class="tabcontent">
-            <div class="c2a">
-				<h2>Overview</h2>
-				<div style="overflow:auto">
-					<table id="reports-tabulated">
-						<thead id="reports-tabulated-thead"></thead>
-						<tbody id="reports-tabulated-tbody"></tbody>
-					</table>
-				</div>
-				<h2>Legend</h2>
-				<h3>D</h3> Publishing Date of Report
-				<h3>P</h3> Price of ELITE
-				<h3>M</h3> Fully Diluted Market Capitalization of ELITE
-				<h3>T</h3> Treasury: Sum of all Class A, B & C assets
-				<h3>R</h3> RFV : Implied implicit value of ELITE, calculated as Net Treasury per Token. R = Sum of all Class A, B & C assets, divided by existing supply of ELITE.
-				<h3>A</h3> Sum of all Class A assets in Treasury: Top 100 cryptocurrencies & equivalents above $1 Billion valuation.
-				<h3>B</h3> Sum of all Class B assets in Treasury: All other smaller cryptocurrencies & equivalents above $1 Million valuation.
-				<h3>C</h3> Sum of all Class C assets in Treasury: Everything else, including memecoins, assets under $1 Million valation, Locked/vesting assets, NFTs, etc.
-				<h3>S</h3> Total Supply minus Supply held by Treasury.
-        	</div>
-        </div>
-
-        <!-- Tab content -->
-        <div id="Treasuries" class="tabcontent">
-            <div class="c2a">
-				<h2>List of Treasury Addresses</h2>
-				<div id="treasuries_list">
-				</div>
-        	</div>
-        </div>
-
-        <!-- Tab content -->
-        <div id="Reports" class="tabcontent">
-            <div class="c2a">
-				<h2>All Reports by Date</h2>
-				<div id="reportslist">
-				</div>
-        	</div>
-        </div>
-
 
 		<br><br>
 
@@ -173,9 +95,10 @@
     </div>
     <!-- Ignore Above Block : Dev Logs -->
 
-    <!--<script src="https://ftm.guru/ethers-5.2.umd.min.js"></script>-->
+    <!--<script src="https://ftm.guru/ethers-5.2.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
     <script src="treasury.js"></script>
     <script src="elite.js"></script>
+    -->
 </body>
 </html>
