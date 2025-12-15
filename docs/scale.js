@@ -8,7 +8,7 @@
 
 	// Special Notes, separated by backticks
 	TREASURY_NOTES = [
-		`Track Assets Under Management on <a target="_blank" href="https://debank.com/bundles/216968/portfolio">DeBank's Bundle 216968</a>.` ,
+		`Track Assets Under Management on <a target="_blank" href="https://debank.com/bundles/218882/portfolio">DeBank's Bundle 216968</a>.` ,
 		`Token Supply number represents only issued the supply not held by Treasury. It is not Circulating supply, neither Total Supply or Unlocked supply, but only the Supply that is externally owned by anyone else, excluding the Treasury itself.` ,
 	]
 
