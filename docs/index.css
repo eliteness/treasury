@@ -189,7 +189,39 @@ footer{
     text-decoration: none;
     margin: 0 10px;
 }
+ /* Style the list */
+ul.breadcrumb {
+  padding: 10px 0;
+  list-style: none;
+}
 
+/* Display list items side by side */
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+  opacity: 0.7;
+  font-family: bold;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: #777;
+  content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+  color: #0ff;
+  text-decoration: none;
+  font-family: bold;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+  color: #0f7;
+  text-decoration: underline;
+}
 #main-area {
     padding: 15px;
     max-width: 90%;
