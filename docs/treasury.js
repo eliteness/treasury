@@ -254,7 +254,7 @@ async function dexstats() {
 	for(i=0; i<TREASURIES_LIST.length; i++){
 		let ri = document.createElement("div");
 		ri.innerHTML =	`
-			<a target="_blank" href="https://debank.com/profile/${TREASURIES_LIST[i][0]}/">${TREASURIES_LIST[i][0]} ${TREASURIES_LIST[i][1]} ↗ </a>
+			<a target="_blank" href="https://debank.com/profile/${TREASURIES_LIST[i][0]}/">${TREASURIES_LIST[i][0]} (${TREASURIES_LIST[i][1]}) ↗ </a>
 		`;
 		$("treasuries_list").appendChild(ri)
 	}
