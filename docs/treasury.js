@@ -392,11 +392,11 @@ option = {
 	let tot_2 = TADATA[TADATA.length-2][2] + TADATA[TADATA.length-2][3] + TADATA[TADATA.length-2][4];
 	$("topstat-date").innerHTML = (new Date(TADATA[TADATA.length-1][0])).toDateString()
 	$("topstat-total").innerHTML = "$" + toLocaleStringFD(0,0,tot_1)
-	$("topstat-rfv").innerHTML = "$" + toLocaleStringFD(6,6,tot_1/TADATA[TADATA.length-1][5])
+	$("topstat-rfv").innerHTML = "$" + toLocaleStringFD( Math.max(0,3-Math.floor(Math.log10(tot_1/TADATA[TADATA.length-1][5]))),Math.max(0,3-Math.floor(Math.log10(tot_1/TADATA[TADATA.length-1][5]))),tot_1/TADATA[TADATA.length-1][5])
 
 	$("topstat-change").innerHTML = ( ( tot_1 - tot_2 ) / tot_2 * 100 ).toFixed(2) + "%"
 	$("topstat-mktcap").innerHTML = "$" + toLocaleStringFD(0,0, TADATA[TADATA.length-1][1] * TADATA[TADATA.length-1][5] )
-	$("topstat-price").innerHTML = "$" + toLocaleStringFD(6,6, TADATA[TADATA.length-1][1] )
+	$("topstat-price").innerHTML = "$" + toLocaleStringFD(Math.max(0,3-Math.floor(Math.log10(TADATA[TADATA.length-1][1]))),Math.max(0,3-Math.floor(Math.log10(TADATA[TADATA.length-1][1]))), TADATA[TADATA.length-1][1] )
 
 	return;
 

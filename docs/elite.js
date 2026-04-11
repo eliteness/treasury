@@ -1,26 +1,27 @@
 // static data
-
+_treasuryData = {};
+{
     // Main Meta
-    TREASURY_TOKEN_TICKER = "ELITE";
-    TREASURY_TOKEN_NAME = "Eliteness.Network";
-    TREASURY_TOKEN_LONGNAME = "Eliteness Network";
+    const TREASURY_TOKEN_TICKER = "ELITE";
+    const TREASURY_TOKEN_NAME = "Eliteness.Network";
+    const TREASURY_TOKEN_LONGNAME = "Eliteness Network";
 
 	// Special Notes, separated by backticks
-	TREASURY_NOTES = [
+	const TREASURY_NOTES = [
 		`Track Assets Under Management on <a target="_blank" href="https://debank.com/bundles/461/portfolio">DeBank's Bundle 461</a>, including proof-of-reserves for public sub-protocols.` ,
 		`ELITE price before March 2025 has been adjusted to 1/300000 to reflect the 1:300K <a target="_blank" href="https://medium.com/@ftm1337/elite-eliteness-network-31086677e2c2">migration from old ELITE</a> on Fantom to new omnichain ELITE.` ,
-		`Token Supply number represents only issued the supply not held by Treasury. It is not Circulating supply, neither Total Supply or Unlocked supply, but only the Supply that is externally owned by anyone else, excluding the Treasury itself.` ,
+		`Token Supply number represents only issued the supply not held by const TREASURy. It is not Circulating supply, neither Total Supply or Unlocked supply, but only the Supply that is externally owned by anyone else, excluding the const TREASURy itself.` ,
 	]
 
 	// Address list
-	TREASURIES_LIST= [
+	const TREASURIES_LIST= [
 		["0x0402af87a3024a5c767b47f0ad42d887014e1d01",""],
 		["0x3ae524d3d330130ab22c3719ca913a3d4a8de504",""],
 		["0x4496323dd41417634b8412091a0b821c36922408",""]
 	]
 
 	// [ wen, marketPrice, classA, classB, classC, supply ]
-	TADATA = [
+	const TADATA = [
 		[ "2022-04-03",	 2503/300_000,       75_000,             0,              0,		400_000_000 ],
 		[ "2022-08-18",	 2619/300_000,       30_000,        24_000,              0,		400_000_000 ],
 		[ "2022-11-05",	 2086/300_000,       24_000,        19_000,         98_500,		400_000_000 ],
@@ -68,7 +69,7 @@
 		],
 		[
 			"2026-03-08",
-			0.001831,
+			0.002458,
 			1000*(	104+2+5+1+2+64+18+15+230+15+3+60+140+6+2+3+30),
 			1000*(	52+13+3+4+5+26+28+3+50+7) ,
 			1000*(	40+3+2+22+4+1+25+3+7  ) ,
@@ -76,3 +77,16 @@
 		],
 
 	]
+
+	_treasuryData = {
+		TREASURY_TOKEN_TICKER,
+		TREASURY_TOKEN_NAME,
+		TREASURY_TOKEN_LONGNAME,
+		TREASURY_NOTES,
+		TREASURIES_LIST,
+		TADATA
+	}
+}
+
+const ELITE = _treasuryData;
+_treasuryData = {};

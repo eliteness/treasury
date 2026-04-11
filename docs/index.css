@@ -440,7 +440,7 @@ button:disabled {
 
 .row-link tr:hover {
 	cursor: pointer;
-	background: #0013377f;
+	background: #137;
 }
 
 #Tablulated .c2a {
@@ -470,6 +470,13 @@ button:disabled {
 #tablulated-legend {
     text-align: left !important;
     margin: 5%
+}
+
+.project-list tr td:first-child {
+    display: none;
+}
+.project-list tr td:nth-child(2) {
+    text-align: left !important;
 }
 
 @media (max-width: 700px) {

@@ -70,65 +70,28 @@
 
 		<br><br>
 
+		<h2 align="center">Click on a project for its detailed report</h2>
         <div class="c2a">
-			<h2>Click on a project for its detailed report</h2>
 			<div style="overflow:auto">
-				<table id="reports-tabulated">
+				<table id="reports-tabulated" class="project-list">
 					<thead id="reports-tabulated-thead">
 						<tr>
 							<td>Tracked Project's Domains</td>
 							<td>Tokens</td>
 							<td>Net Assets</td>
-							<td>Os. MktCap</td>
+							<td>Mkt. Cap.</td>
+							<td>RFV Par</td>
 							<td>Last Update</td>
 						</tr>
 					</thead>
 					<tbody class="row-link" id="reports-tabulated-tbody">
-						<tr onclick='location="./elite"'>
-							<td>Eliteness.Network</td>
-							<td>ELITE</td>
-							<td>$700,000</td>
-							<td>$800,000</td>
-							<td>2026-03-08</td>
-						</tr>
-						<tr onclick='location="./trenches"'>
-							<td>Trenches.Fund</td>
-							<td>TRENCHES</td>
-							<td>$160,000</td>
-							<td>$180,000</td>
-							<td>2026-03-08</td>
-						</tr>
-						<tr onclick='location="./scale"'>
-							<td>Scale.Farm</td>
-							<td>SCALE</td>
-							<td>$38,000</td>
-							<td>$650,000</td>
-							<td>2026-03-08</td>
-						</tr>
-						<tr onclick='location="./thestrat"'>
-							<td>theSTRAT.MCLB.org</td>
-							<td>theSTRAT</td>
-							<td>$700,000</td>
-							<td>$800,000</td>
-							<td>2026-04-08</td>
-						</tr>
-						<tr onclick='location="./eliteringsscusd"'>
-							<td>Eliteness.Network/rings/scusd</td>
-							<td>eliteRingsScUSD</td>
-							<td>$24,000</td>
-							<td>$104,000</td>
-							<td>2026-04-08</td>
-						</tr>
-						<tr onclick='location="./eliteringssceth"'>
-							<td>Eliteness.Network/rings/sceth</td>
-							<td>eliteRingsScETH</td>
-							<td>$30,000</td>
-							<td>$35,000</td>
-							<td>2026-04-08</td>
-						</tr>
 					</tbody>
 				</table>
 			</div>
+		</div>
+
+		<div id="chart-footer" style="font-size: 0.9em;text-align: center; color:#eef;">
+			<div>Shown Market Cap is Outstanding Market Capitalization, a number that represents the valuation of only the issued supply thats not held by Treasury. Outstanding Supply is not Circulating supply, neither Total Supply or Unlocked supply, but only the Supply that is externally owned by anyone else, excluding the Treasury itself.</div>
 		</div>
 
 		<br><br>
@@ -166,8 +129,14 @@
     <!--<script src="https://ftm.guru/ethers-5.2.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
     <script src="treasury.js"></script>
-    <script src="index2.js"></script>
     -->
+    <script src="elite.js"></script>
+    <script src="trenches.js"></script>
+    <script src="scale.js"></script>
+    <script src="eliteringsscusd.js"></script>
+    <script src="eliteringssceth.js"></script>
+    <script src="thestrat.js"></script>
+    <script src="index.js"></script>
     <script>
     </script>
 </body>
