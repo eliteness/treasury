@@ -14,14 +14,14 @@ _treasuryData = {};
 
 	// Address list
 	const TREASURIES_LIST= [
-		["0xf5bd0ffbf62294f067689e2cbcd10d473c7a6d8b","Main multisig"],
+		["0xB5Ac0a44AFa382c4fBF94aB168F108Aa1721c436","Main"],
 	]
 
 	// [ wen, marketPrice, classA, classB, classC, supply ]
 	const TADATA = [
 		[
 			"2025-04-08",
-			1111,
+			1098,
 			1000*(	30 ),
 			1000*(	0 ) ,
 			1000*(	0  ) ,
@@ -29,7 +29,7 @@ _treasuryData = {};
 		],
 		[
 			"2026-04-08",
-			1111,
+			1139,
 			1000*(	32 ),
 			1000*(	0 ) ,
 			1000*(	0  ) ,
