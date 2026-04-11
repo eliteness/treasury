@@ -56,7 +56,7 @@ async function dexstats() {
 			<td>${ toLocaleStringFD(2, 2, (lastTadata[2]+lastTadata[3]+lastTadata[4])/(lastTadata[1]*lastTadata[5])*100 ) }%</td>
 			<td>${ lastTadata[0] }</td>
 		`;
-		tri.setAttribute("onclick","window.location=./"+ ALL_TREASURY_PROJECTS[i].TREASURY_TOKEN_TICKER.toLowerCase() )
+		tri.setAttribute("onclick","window.location='./"+ ALL_TREASURY_PROJECTS[i].TREASURY_TOKEN_TICKER.toLowerCase() +"'" )
 		$("reports-tabulated-tbody").appendChild(tri)
 	}
 }
