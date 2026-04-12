@@ -10,7 +10,7 @@ _treasuryData = {};
 	// Special Notes, separated by backticks
 	const TREASURY_NOTES = [
 		`Track Assets Under Management on <a target="_blank" href="https://debank.com/bundles/218882/portfolio">DeBank's Bundle 216968</a>.` ,
-		`Token Supply number represents only issued the supply not held by const TREASURy. It is not Circulating supply, neither Total Supply or Unlocked supply, but only the Supply that is externally owned by anyone else, excluding the const TREASURy itself.` ,
+		`Token Supply number represents only issued the supply not held by treasury. It is not Circulating supply, neither Total Supply or Unlocked supply, but only the Supply that is externally owned by anyone else, excluding the treasury itself.` ,
 	]
 
 
@@ -33,6 +33,7 @@ _treasuryData = {};
 		[ "2026-01-09",	     0.0214,	    16659+277+(8.789*3116)+-(712),         173,              3893+1580+717+545,     22_855_563 - (2_737_049+1484371+1601000) ],
 		[ "2026-01-31",	     0.0274,	    16731+295+(8.789*2308)+-(699),         90,              3912+800+318+545,     22_855_563 - (2_663_942+1484371+1601000) ],
 		[ "2026-03-03",	     0.03618,	    15736+182+(8.789*2015)+-(686),         80,              4651+740+334+425,     22_855_563 - (2_661_876+1484371+1601000) ],
+		[ "2026-04-06",	     0.03118,	    14736+210+(8.789*2151)+-(617),         72,              300+1850+208+397,     23_255_546 - (2_936_844+1484371+1601000) ],
 	]
 
 	_treasuryData = {

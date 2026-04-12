@@ -10,7 +10,7 @@ _treasuryData = {};
 	const TREASURY_NOTES = [
 		`Track Assets Under Management on <a target="_blank" href="https://debank.com/bundles/461/portfolio">DeBank's Bundle 461</a>, including proof-of-reserves for public sub-protocols.` ,
 		`ELITE price before March 2025 has been adjusted to 1/300000 to reflect the 1:300K <a target="_blank" href="https://medium.com/@ftm1337/elite-eliteness-network-31086677e2c2">migration from old ELITE</a> on Fantom to new omnichain ELITE.` ,
-		`Token Supply number represents only issued the supply not held by const TREASURy. It is not Circulating supply, neither Total Supply or Unlocked supply, but only the Supply that is externally owned by anyone else, excluding the const TREASURy itself.` ,
+		`Token Supply number represents only issued the supply not held by treasury. It is not Circulating supply, neither Total Supply or Unlocked supply, but only the Supply that is externally owned by anyone else, excluding the treasury itself.` ,
 	]
 
 	// Address list
@@ -69,10 +69,18 @@ _treasuryData = {};
 		],
 		[
 			"2026-03-08",
-			0.00178,
+			0.001831,
 			1000*(	104+2+5+1+2+64+18+15+230+15+3+60+140+6+2+3+30),
 			1000*(	52+13+3+4+5+26+28+3+50+7) ,
 			1000*(	40+3+2+22+4+1+25+3+7  ) ,
+			400_000_000
+		],
+		[
+			"2026-04-06",
+			0.002313,
+			1000*(42+38+12+10+19+5+73+19+1+210+19+15+6+15+30+2+5),
+			1000*(30+30+29+12+3+21+10+16+6+10+5+20+3+10+5+24) ,
+			1000*(20+4+46+1) ,
 			400_000_000
 		],
 
