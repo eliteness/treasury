@@ -1,21 +1,20 @@
 // static data
-_treasuryData = {};
-{
+
     // Main Meta
-    const TREASURY_TOKEN_TICKER = "SCALE";
-    const TREASURY_TOKEN_NAME = "Scale";
-    const TREASURY_TOKEN_LONGNAME = "Scale Farm";
+    TREASURY_TOKEN_TICKER = "SCALE";
+    TREASURY_TOKEN_NAME = "Scale";
+    TREASURY_TOKEN_LONGNAME = "Scale Farm";
 
 
 	// Special Notes, separated by backticks
-	const TREASURY_NOTES = [
+	TREASURY_NOTES = [
 		`Track Assets Under Management on <a target="_blank" href="https://debank.com/bundles/218882/portfolio">DeBank's Bundle 216968</a>.` ,
-		`Token Supply number represents only issued the supply not held by const TREASURy. It is not Circulating supply, neither Total Supply or Unlocked supply, but only the Supply that is externally owned by anyone else, excluding the const TREASURy itself.` ,
+		`Token Supply number represents only issued the supply not held by Treasury. It is not Circulating supply, neither Total Supply or Unlocked supply, but only the Supply that is externally owned by anyone else, excluding the Treasury itself.` ,
 	]
 
 
 	// Address list
-	const TREASURIES_LIST= [
+	TREASURIES_LIST= [
 		["0x9a134d3bdeb95c8c8773bd7627f1fdd792531c97",""],
 		["0x7d970d34a041251a4500fc4997c6f74104f16d23",""],
 		["0xd9ae2c82b62000c95091f38bb1e796cc9899ee07",""],
@@ -23,7 +22,7 @@ _treasuryData = {};
 	]
 
 
-	const TADATA = [
+	TADATA = [
 		// [ wen, marketPrice, classA, classB, classC, supply ]
 		[ "2025-10-14",	     0.04915,	    21391+348+(8.789*4189)+-(747),         257,              5832+2765+747,         22_518_959 - (5841300) ],
 		[ "2025-10-18",	     0.04686,	    21391+348+(8.789*3889)+-(747),         252,              4588+2471+747,         22_518_959 - (5841300) ],
@@ -33,17 +32,8 @@ _treasuryData = {};
 		[ "2026-01-09",	     0.0214,	    16659+277+(8.789*3116)+-(712),         173,              3893+1580+717+545,     22_855_563 - (2_737_049+1484371+1601000) ],
 		[ "2026-01-31",	     0.0274,	    16731+295+(8.789*2308)+-(699),         90,              3912+800+318+545,     22_855_563 - (2_663_942+1484371+1601000) ],
 		[ "2026-03-03",	     0.03618,	    15736+182+(8.789*2015)+-(686),         80,              4651+740+334+425,     22_855_563 - (2_661_876+1484371+1601000) ],
+		[ "2026-04-06",	     0.03118,	    14736+210+(8.789*2151)+-(617),         72,              300+1850+208+397,     23_255_546 - (2_936_844+1484371+1601000) ],
 	]
 
-	_treasuryData = {
-		TREASURY_TOKEN_TICKER,
-		TREASURY_TOKEN_NAME,
-		TREASURY_TOKEN_LONGNAME,
-		TREASURY_NOTES,
-		TREASURIES_LIST,
-		TADATA
-	}
-}
 
-const SCALE = _treasuryData;
-_treasuryData = {};
+
