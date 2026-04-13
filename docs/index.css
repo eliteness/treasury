@@ -28,6 +28,13 @@
 	cursor: pointer;
 }
 
+.redChangePct {
+	color: #f53;
+}
+.greenChangePct {
+	color: #2f2;
+}
+
 /* Tabbed content */
 .tab {
     overflow: hidden;

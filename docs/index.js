@@ -48,13 +48,16 @@ async function dexstats() {
 	for(i=ALL_TREASURY_PROJECTS.length-1; i >= 0; i--) {
 		let tri = document.createElement("tr");
 		let lastTadata = ALL_TREASURY_PROJECTS[i].TADATA[ ALL_TREASURY_PROJECTS[i].TADATA.length-1 ]
+		let lastTadata2 = ALL_TREASURY_PROJECTS[i].TADATA[ ALL_TREASURY_PROJECTS[i].TADATA.length-2 ]
+		let changePct = ( (lastTadata[2]+lastTadata[3]+lastTadata[4]) - (lastTadata2[2]+lastTadata2[3]+lastTadata2[4])) / (lastTadata2[2]+lastTadata2[3]+lastTadata2[4]) * 100;
 		tri.innerHTML =	`
 			<td>${ ALL_TREASURY_PROJECTS[i].TREASURY_TOKEN_LONGNAME }</td>
 			<td>${ ALL_TREASURY_PROJECTS[i].TREASURY_TOKEN_TICKER }</td>
 			<td>$${ toLocaleStringPD(3, lastTadata[2]+lastTadata[3]+lastTadata[4]) }</td>
 			<td>$${ toLocaleStringPD(3, lastTadata[1] * lastTadata[5]) }</td>
 			<td>${ toLocaleStringFD(2, 2, (lastTadata[2]+lastTadata[3]+lastTadata[4])/(lastTadata[1]*lastTadata[5])*100 ) }%</td>
-			<td>${ lastTadata[0] }</td>
+			<td>${ (new Date(lastTadata[0])).toDateString().substr(4) }</td>
+			<td class="${ changePct>0 ? 'greenChangePct' : 'redChangePct' }">${ toLocaleStringFD(2, 2, changePct) }%</td>
 		`;
 		tri.setAttribute("onclick","window.location='./"+ ALL_TREASURY_PROJECTS[i].TREASURY_TOKEN_TICKER.toLowerCase() +"'" )
 		$("reports-tabulated-tbody").appendChild(tri)
