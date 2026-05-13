@@ -246,7 +246,7 @@ async function dexstats() {
 
 		let ri = document.createElement("h3");
 		ri.innerHTML =	`
-			<h3><a target="_blank" href="https://ftm.guru/docs/treasury/${TADATA[i][0]}/">Read report from ${TADATA[i][0]} ↗ </a></h3>
+			<h3><a target="_blank" href="https://ftm1337.eliteness.network/docs/treasury/${TADATA[i][0]}/">Read report from ${TADATA[i][0]} ↗ </a></h3>
 		`;
 		$("reportslist").appendChild(ri)
 	}
