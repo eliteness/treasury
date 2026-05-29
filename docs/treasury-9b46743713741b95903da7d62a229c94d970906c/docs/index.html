@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Treasury | Guru Network</title>
+    <meta name="description" content="Treasury - Powered by Guru Network!">
+    <meta name="keywords" content="eliteness.network">
+    <link rel="shortcut icon" href="https://ftm1337.eliteness.network/icons/lock.svg">
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+
+    <div id="note" class="overlay">
+        <div class="popup">
+            <a class="close" href="#">&times;</a>
+            <div class="content" id="content1">
+                Welcome!
+            </div>
+        </div>
+    </div>
+
+    <div class="topnav">
+        <div class="topnav-left">
+            <a href="https://eliteness.network">
+                <img src="https://ftm1337.eliteness.network/icons/eliteness.png" alt="Logo" height="32px">
+            </a>
+            <b><i>ELITENESS<br>Network</i></b>
+        </div>
+        <div class="topnav-right">
+            <p id="p_cw">
+                <span id="cw" onclick="cw()"><span id="cw_og" class="equal-gradient">Connect wallet</span></span>
+            </p>
+        </div>
+    </div>
+
+
+
+    <div id="main-area">
+		<ul class="breadcrumb">
+    		<li><a href="https://eliteness.network">eliteness.network</a></li>
+    		<li>treasury</li>
+		</ul>
+
+        <div class="headline">
+            <div class="headline-keyword">Treasury</div>
+            Historical Snapshots of Treasury
+        </div>
+
+        <!-- <div class="page-heading">
+            <img src="https://ftm1337.eliteness.network/icons/lock.svg" alt="Lock Icon">
+            <a href="https://eliteness.network/elocks">eLOCKS</a>
+            ≻ <a>Overview</a>
+        </div> -->
+
+        <div class="topstats" style="display:none">
+            <div class="topstat" onclick="window.location='./elite'">
+                <div id="topstat-date"><img height="20px" src="https://ftm1337.eliteness.network/icons/eliteness.png"></img> ELITE</div>
+                <div>View Eliteness.Network Treasury</div>
+            </div>
+            <div class="topstat" onclick="window.location='./scale'">
+                <div id="topstat-date"><img height="20px" src="https://ftm1337.eliteness.network/icons/scale.png"> SCALE</div>
+                <div>View Scale.Farm Treasury</div>
+            </div>
+            <div class="topstat" onclick="window.location='./trenches'">
+                <div id="topstat-date"><img height="20px" src="https://ftm1337.eliteness.network/icons/trenches.png"> TRENCHES</div>
+                <div>View Trenches.Fund Treasury</div>
+            </div>
+        </div>
+
+		<br><br>
+
+		<h2 align="center">Click on a project for its detailed report</h2>
+        <div class="c2a">
+			<div style="overflow:auto">
+				<table id="reports-tabulated" class="project-list">
+					<thead id="reports-tabulated-thead">
+						<tr>
+							<td>Tracked Project's Domains</td>
+							<td>Tokens</td>
+							<td>Net Assets</td>
+							<td>Mkt. Cap.</td>
+							<td>RFV Par</td>
+							<td>Last Update</td>
+							<td>Change</td>
+						</tr>
+					</thead>
+					<tbody class="row-link" id="reports-tabulated-tbody">
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div id="chart-footer" style="font-size: 0.9em;text-align: center; color:#eef;">
+			<div>Shown Market Cap is Outstanding Market Capitalization, a number that represents the valuation of only the issued supply thats not held by Treasury. Outstanding Supply is not Circulating supply, neither Total Supply or Unlocked supply, but only the Supply that is externally owned by anyone else, excluding the Treasury itself.</div>
+		</div>
+
+		<br><br>
+
+		<footer>
+        <h2>Powered by Guru Network</h2>
+        <div class="social">
+            <a target="_blank" href="https://discord.gg/QpyfMarNrV"><img src="https://ftm1337.eliteness.network/icons/discord.svg" alt="Discord"></a>
+            <a target="_blank" href="https://twitter.com/FTM1337"><img src="https://ftm1337.eliteness.network/icons/twitter.svg" alt="Twitter"></a>
+            <a target="_blank" href="https://dune.com/eliteness"><img src="https://ftm1337.eliteness.network/icons/dune.svg" alt="Dune"></a>
+            <a target="_blank" href="https://defillama.com/protocol/guru-network-dao"><img src="https://ftm1337.eliteness.network/icons/defillama.svg" alt="Defillama"></a>
+            <a target="_blank" href="https://coinmarketcap.com/currencies/elite-1337"><img src="https://ftm1337.eliteness.network/icons/cmc.svg" alt="CoinMarketCap"></a>
+            <a target="_blank" href="https://ftm1337.eliteness.network/docs"><img src="https://ftm1337.eliteness.network/icons/docs.svg" alt="Docs"></a>
+        </div>
+	</footer>
+    </div>
+
+    <!-- Ignore Below Block : Dev Logs -->
+    <div style="display:none">
+        <span id="cw_m"></span>
+        <div id="connect">
+            Please connect your web3 wallet.
+            <button onclick="cw()" id="btn-connect">Connect</button>
+        </div>
+        <div id="switch">
+            <b id="btn-switch" onclick="cw()">
+                <span id="cw"></span>
+            </b>
+            <div>Balance: <b id="usb-mtv">?</b> USDC</div>
+            <span>Wallet at Fantom Opera. <a href="index.html" style="color:aqua;">Change?</a></span>
+        </div>
+    </div>
+    <!-- Ignore Above Block : Dev Logs -->
+
+    <!--<script src="https://ftm1337.eliteness.network/ethers-5.2.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+    <script src="treasury.js"></script>
+    -->
+    <script src="elite.js"></script>
+    <script src="trenches.js"></script>
+    <script src="scale.js"></script>
+    <script src="eliteringsscusd.js"></script>
+    <script src="eliteringssceth.js"></script>
+    <script src="thestrat.js"></script>
+    <script src="pzero.js"></script>
+    <script src="index.js"></script>
+    <script>
+    </script>
+</body>
+</html>
