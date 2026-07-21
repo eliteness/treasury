@@ -14,7 +14,7 @@ _treasuryData = {};
 
 	// Address list
 	const TREASURIES_LIST= [
-		["0xB5Ac0a44AFa382c4fBF94aB168F108Aa1721c436","Main"],
+		["0xb82beb0860bde0838e7b721d747528f24a258825","Main"],
 	]
 
 	// [ wen, marketPrice, classA, classB, classC, supply ]
